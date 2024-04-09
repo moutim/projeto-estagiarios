@@ -1,0 +1,23 @@
+<div class="movie-section">
+  <h2 class="section-title">Romance</h2>
+  <mat-grid-list cols="5" rowHeight="300px" gutterSize="10px">
+    <mat-grid-tile *ngFor="let movie of RomanceMovies">
+      <mat-card>
+        <img mat-card-image [src]="movie.image" alt="{{ movie.title }}">
+        <mat-card-title>{{ movie.title }}</mat-card-title>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
+
+<div class="movie-section">
+  <h2 class="section-title">Animações</h2>
+  <mat-grid-list cols="5" rowHeight="300px" gutterSize="10px">
+    <mat-grid-tile *ngFor="let animation of Animations">
+      <mat-card>
+        <img mat-card-image [src]="animation.image" alt="{{ animation.title }}">
+        <mat-card-title>{{ animation.title }}</mat-card-title>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

@@ -1,0 +1,23 @@
+.movie-section {
+  margin-bottom: 20px;
+
+  .section-title {
+    font-size: 24px;
+    margin: 0 0 10px;
+  }
+
+  mat-card {
+    display: flex;
+    flex-direction: column;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+
+    mat-card-title {
+      font-size: 16px;
+      margin-top: 5px;
+    }
+  }
+}
