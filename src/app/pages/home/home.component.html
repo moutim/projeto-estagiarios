@@ -1,23 +1,17 @@
 <div class="movie-section">
-  <h2 class="section-title">Romance</h2>
-  <mat-grid-list cols="5" rowHeight="300px" gutterSize="10px">
-    <mat-grid-tile *ngFor="let movie of RomanceMovies">
-      <mat-card>
-        <img mat-card-image [src]="movie.image" alt="{{ movie.title }}">
-        <mat-card-title>{{ movie.title }}</mat-card-title>
-      </mat-card>
-    </mat-grid-tile>
-  </mat-grid-list>
-</div>
+  <h2 class="section-title">Trending Movies This Week</h2>
 
-<div class="movie-section">
-  <h2 class="section-title">Animações</h2>
-  <mat-grid-list cols="5" rowHeight="300px" gutterSize="10px">
-    <mat-grid-tile *ngFor="let animation of Animations">
-      <mat-card>
-        <img mat-card-image [src]="animation.image" alt="{{ animation.title }}">
-        <mat-card-title>{{ animation.title }}</mat-card-title>
-      </mat-card>
-    </mat-grid-tile>
-  </mat-grid-list>
+  <!-- Mat Stepper -->
+  <mat-horizontal-stepper linear #stepper class="movie-stepper">
+    <mat-step *ngFor="let group of trendingMovies; let i = index">
+      <ng-template matStepLabel></ng-template>
+      <div class="movies-group">
+        <img *ngFor="let item of group" [src]="getMovieImageUrl(item.poster_path)" alt="{{ item.title }}" class="movie-img">
+      </div>
+      <div class="stepper-navigation">
+        <button mat-button matStepperPrevious *ngIf="i !== 0">Back</button>
+        <button mat-button matStepperNext *ngIf="i !== trendingMovies.length - 1">Next</button>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
 </div>

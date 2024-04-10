@@ -1,31 +1,60 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { MovieService } from './../../services/movies/movie.service';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
 })
-export class HomeComponent{
+export class HomeComponent implements OnInit {
+scrollLeft(arg0: any) {
+throw new Error('Method not implemented.');
+}
+scrollRight(arg0: any) {
+throw new Error('Method not implemented.');
+}
+  trendingMovies: any[] = [[], [], [], []];
+stepperContainer: any;
 
+  constructor(
+    private movieService: MovieService,
+    private _formBuilder: FormBuilder
+  ) {}
 
-  RomanceMovies: any[]=[]
-  Animations: any[]=[]
+  firstFormGroup = this._formBuilder.group({
+    firstCtrl: ['', Validators.required],
+  });
+  secondFormGroup = this._formBuilder.group({
+    secondCtrl: ['', Validators.required],
+  });
+  isEditable = false;
 
   ngOnInit(): void {
-    this.RomanceMovies = [
-      { title: 'Romance Movie 1', image: 'assets/movies/romance1.jpg' },
-      { title: 'Romance Movie 2', image: 'assets/movies/romance2.jpg' },
-      { title: 'Romance Movie 3', image: 'assets/movies/romance3.jpg' },
-    ];
+    const movies = this.movieService.getTrendingMovies().results;
 
-    this.Animations = [
-      { title: 'Animation 1', image: 'assets/animations/animation1.jpg' },
-      { title: 'Animation 2', image: 'assets/animations/animation2.jpg' },
-      { title: 'Animation 3', image: 'assets/animations/animation3.jpg' },
+    movies.forEach((item: any, index: number) => {
+      // let j = index % 4;
+      // this.trendingMovies[j].push(item);
+      let groupIndex = Math.floor(index / 5);
 
-    ];
+      if (groupIndex < this.trendingMovies.length) {
+        this.trendingMovies[groupIndex].push(item);
+      }
+    });
+    console.log(this.trendingMovies);
+
+    // this.trendingMovies = this.movieService.getTrendingMovies().results;
+    // this.movieService.getTrendingMovies().subscribe({
+    //   next: (response: any) => { console.log(response)
+    //     this.trendingMovies = response.results;
+    //   },
+    //   error: (e: any) => console.error(e),
+    //   complete: () => console.info('Trending movies fetch complete')
+    // });
   }
 
-
-
+  getMovieImageUrl(path: string): string {
+    return `https://image.tmdb.org/t/p/w500${path}`;
+  }
 }
