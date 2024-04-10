@@ -1,9 +1,17 @@
-<mat-card>
+<mat-card *ngIf="cardVisible" class="cardVisible">
+  <video autoplay muted loop id="myVideo">
+    <source src="../../../assets/videoHome.mov" type="video/mp4">
+  </video>
+
   <mat-card-header>
-    <mat-card-title>ProjetoEstagiários Account</mat-card-title>
+    <h1 style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif">FilmControl Account</h1>
+
+    <button mat-button (click)="closeCardLog()" class="close-button">
+      <mat-icon>close</mat-icon>
+    </button>
   </mat-card-header>
 
-  <div>
+  <div class="inputLog">
     <mat-form-field>
       <mat-label>Enter your email</mat-label>
       <input matInput
@@ -15,5 +23,23 @@
       <input matInput
              placeholder="123">
     </mat-form-field>
+
+
+
   </div>
+
+  <div class="checkoutLog"></div>
+  <div class="example-button-row">
+    <button mat-flat-button color="primary">Start Session!</button>
+
+  </div>
+
+  <div class="createAccount"></div>
+  <div class="example-button-row1">
+    <button mat-flat-button color="primary">Create Account!</button>
+
+  </div>
+
+
+
 </mat-card>

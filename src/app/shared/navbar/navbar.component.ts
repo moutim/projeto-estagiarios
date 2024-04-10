@@ -18,6 +18,7 @@ export class NavbarComponent {
   openDialog(){
     this.dialog.open(LoginComponent);
 
+
   }
 
 
