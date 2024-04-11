@@ -12,6 +12,10 @@
   visibility: hidden;
 }
 
+::ng-deep .mat-horizontal-content-container{
+  background: #1c286e
+}
+
 .mat-horizontal-stepper-header .mat-step-icon,
 .mat-horizontal-stepper-header .mat-step-icon-selected,
 .mat-horizontal-stepper-header-container {
@@ -72,7 +76,6 @@
 }
 
 .stepper-navigation-button {
-  color: #fff;
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 50%;
   position: absolute;
@@ -90,7 +93,6 @@
 }
 
 .stepper-button {
-  color: #fff;
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 50%;
 }
@@ -99,7 +101,6 @@
 
 
 button[mat-icon-button] {
-  color: #fff;
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 50%;
 }
