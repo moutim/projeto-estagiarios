@@ -12,8 +12,15 @@ export class MovieService {
 
   constructor(private http: HttpClient) {}
 
-  getTrendingMovies() {
-    // return this.http.get(`${this.baseUrl}/trending/movie/week?api_key=${this.apiKey}`);
-    return mockMovieTrending;
+  getTrendingMovies(): any {
+    return this.http.get(`${this.baseUrl}/trending/movie/week?api_key=${this.apiKey}`);
+    // return mockMovieTrending;
   }
+
+  getTopRatedMovies() {
+    return this.http.get (`${this.baseUrl}/movie/top_rated?api_key=${this.apiKey}&language=en-US&page=1`);
+  }
+
 }
+
+

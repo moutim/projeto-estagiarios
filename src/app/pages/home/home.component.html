@@ -1,17 +1,57 @@
-<div class="movie-section">
-  <h2 class="section-title">Trending Movies This Week</h2>
+<link
+  href="https://fonts.googleapis.com/icon?family=Material+Icons"
+  rel="stylesheet"
+/>
+<!-- Trending Movies Section -->
+<h2 class="section-title">Trending Movies This Week</h2>
 
-  <!-- Mat Stepper -->
+<div class="movie-section">
+  <div>
+    <button mat-icon-button (click)="stepper.previous()" [class.invisible]="stepper.selectedIndex === 0" class="left-button">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+  </div>
+
   <mat-horizontal-stepper linear #stepper class="movie-stepper">
-    <mat-step *ngFor="let group of trendingMovies; let i = index">
+    <mat-step *ngFor="let group of trendingMoviesFilter">
       <ng-template matStepLabel></ng-template>
       <div class="movies-group">
-        <img *ngFor="let item of group" [src]="getMovieImageUrl(item.poster_path)" alt="{{ item.title }}" class="movie-img">
-      </div>
-      <div class="stepper-navigation">
-        <button mat-button matStepperPrevious *ngIf="i !== 0">Back</button>
-        <button mat-button matStepperNext *ngIf="i !== trendingMovies.length - 1">Next</button>
+        <img
+          class="movie-card"
+          *ngFor="let movie of group"
+          [src]="getMovieImageUrl(movie.poster_path)"
+          alt="{{ movie.title }}"
+        />
       </div>
     </mat-step>
   </mat-horizontal-stepper>
+
+
+  <div>
+    <button mat-icon-button (click)="stepper.next()" [class.invisible]="stepper.selectedIndex === trendingMovies.length - 1" class="right-button">
+      <mat-icon>arrow_forward</mat-icon>
+    </button>
+  </div>
+</div>
+
+<!-- Top Rated Movies Section -->
+<h2 class="section-title">Top Rated Movies</h2>
+<div class="movie-section">
+  <button mat-icon-button (click)="topRatedStepper.previous()" [class.invisible]="topRatedStepper.selectedIndex === 0" class="left-button">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+  <mat-horizontal-stepper linear #topRatedStepper class="movie-stepper">
+    <mat-step *ngFor="let group of topRatedMoviesFilter">
+      <ng-template matStepLabel></ng-template>
+      <div class="movies-group">
+        <img class="movie-card" *ngFor="let movie of group" [src]="getMovieImageUrl(movie.poster_path)" alt="{{ movie.title }}" />
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
+  <div>
+
+    <button mat-icon-button (click)="topRatedStepper.next()" [class.invisible]="topRatedStepper.selectedIndex === topRatedMovies.length - 1" class="right-button">
+      <mat-icon>arrow_forward</mat-icon>
+    </button>
+  </div>
 </div>

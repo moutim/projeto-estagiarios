@@ -8,14 +8,13 @@ import { FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-scrollLeft(arg0: any) {
-throw new Error('Method not implemented.');
-}
-scrollRight(arg0: any) {
-throw new Error('Method not implemented.');
-}
-  trendingMovies: any[] = [[], [], [], []];
-stepperContainer: any;
+  [x: string]: any;
+
+  trendingMovies: any[] = [];
+  trendingMoviesFilter: any[] = [[], [], [], []];
+  topRatedMovies: any[] = [];
+  topRatedMoviesFilter: any[] = [[], [], [], []];
+  stepperContainer: any;
 
   constructor(
     private movieService: MovieService,
@@ -30,28 +29,57 @@ stepperContainer: any;
   });
   isEditable = false;
 
-  ngOnInit(): void {
-    const movies = this.movieService.getTrendingMovies().results;
+  ngOnInit() {
+    // // const movies = this.movieService.getTrendingMovies().results;
 
-    movies.forEach((item: any, index: number) => {
-      // let j = index % 4;
-      // this.trendingMovies[j].push(item);
-      let groupIndex = Math.floor(index / 5);
 
-      if (groupIndex < this.trendingMovies.length) {
-        this.trendingMovies[groupIndex].push(item);
-      }
+    // // const movies = this.movieService.getTrendingMovies().results;
+    // this['Trendingmovies'].forEach((item: any, index: number) => {
+    //   // let j = index % 4;
+    //   // this.trendingMovies[j].push(item);
+    //   let groupIndex = Math.floor(index / 5);
+
+    //   if (groupIndex < this.trendingMovies.length) {
+    //     this.trendingMovies[groupIndex].push(item);
+    //   }
+    this.fetchTrendingMovies()
+    this.fetchTopRatedMovies()
+}
+
+  fetchTrendingMovies(): void {
+    this.movieService.getTrendingMovies().subscribe({
+      next: (response: any) => { console.log(response)
+        this.trendingMovies = response.results;
+        response.results.forEach((item: any, index: number) => {
+          // let j = index % 4;
+          // this.trendingMovies[j].push(item);
+          let groupIndex = Math.floor(index / 5);
+
+          if (groupIndex < this.trendingMovies.length) {
+            this.trendingMoviesFilter[groupIndex].push(item);
+          }
+        });
+      },
+      error: (e: any) => console.error(e),
+      complete: () => console.info('Trending movies fetch complete')
     });
-    console.log(this.trendingMovies);
+  }
 
-    // this.trendingMovies = this.movieService.getTrendingMovies().results;
-    // this.movieService.getTrendingMovies().subscribe({
-    //   next: (response: any) => { console.log(response)
-    //     this.trendingMovies = response.results;
-    //   },
-    //   error: (e: any) => console.error(e),
-    //   complete: () => console.info('Trending movies fetch complete')
-    // });
+  fetchTopRatedMovies(): void {
+    this.movieService.getTopRatedMovies().subscribe({
+      next: (response: any) => {console.log(response)
+        this.topRatedMovies = response.results;
+        response.results.forEach((item: any, index: number) => {
+          let groupIndex = Math.floor(index / 5);
+          if (groupIndex < this.topRatedMovies.length) {
+            this.topRatedMoviesFilter[groupIndex].push(item);
+          }
+        });
+
+      },
+      error: (e: any) => console.error(e),
+      complete: () => console.info('Top-rated movies fetch complete'),
+    });
   }
 
   getMovieImageUrl(path: string): string {
