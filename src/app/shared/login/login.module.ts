@@ -7,6 +7,7 @@ import {MatInputModule} from  '@angular/material/input' ;
 import {MatFormFieldModule} from  '@angular/material/form-field' ;
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
+import { CadastroModule } from '../cadastro/cadastro.module';
 
 
 
@@ -14,7 +15,7 @@ import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
-    LoginComponent
+    LoginComponent,
   ],
   imports: [
     CommonModule,
@@ -25,7 +26,7 @@ import { MatIconModule } from '@angular/material/icon';
      MatButtonModule,
      MatCardModule,
      MatIconModule,
-
+    CadastroModule
      ]
 })
 export class LoginModule { }

@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { NavbarModule } from './shared/navbar/navbar.module';
 import { LoginModule } from './shared/login/login.module';
+import { CadastroModule } from './shared/cadastro/cadastro.module';
 
 
 
@@ -21,8 +22,8 @@ import { LoginModule } from './shared/login/login.module';
     BrowserModule,
     AppRoutingModule,
     NavbarModule,
-    LoginModule
-
+    LoginModule,
+    CadastroModule
   ],
   providers: [
     provideClientHydration(),

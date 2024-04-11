@@ -4,10 +4,11 @@ mat-card-header{
   border-radius: 8px;
 }
 
-h1{
+p{
   color: white;
   padding-top: 8px;
   z-index: 4 !important;
+  font-size: 40px;
 
   user-select: none;
   -webkit-user-select: none;
@@ -15,13 +16,14 @@ h1{
   -moz-user-select: none;
 }
 
-.close-button {
-
-
-  color: white;
+.close-button{
   position: absolute;
-  top: 0;
-  right: 0;
+  background-color: transparent;
+  color: white;
+  border: 0;
+  top: 2px;
+  right: 2px;
+
 }
 #myVideo {
   position: absolute;
@@ -34,8 +36,9 @@ mat-card{
   display: flex;
   align-items: center;
   flex-direction: column;
-  width: 695px;
+  width: 650px;
   height: 391px;
+  overflow-x: hidden;
 
 
 
@@ -50,7 +53,7 @@ mat-card{
 
 .example-button-row {
 
-  width: 130px;
+  width: 160px;
   text-align: center;
   border-radius: 8px;
 
@@ -61,11 +64,11 @@ mat-card{
 }
 }
 
-.example-button-row1 {
+.example-button-row2 {
   background-color: #3f51b5;
   padding-top: 10px;
 
-  width: 140px;
+  width: 160px;
   text-align: center;
   border-radius: 8px;
 
@@ -75,3 +78,6 @@ mat-card{
 
 }
 }
+
+
+

@@ -1,10 +1,12 @@
-<mat-card *ngIf="cardVisible" class="cardVisible">
+<cadastro  *ngIf="isRegistering" ></cadastro>
+
+<mat-card *ngIf=" !isRegistering " class="cardVisible">
   <video autoplay muted loop id="myVideo">
     <source src="../../../assets/videoHome.mov" type="video/mp4">
   </video>
 
   <mat-card-header>
-    <h1 style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif">FilmControl Account</h1>
+    <p style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif">FilmControl Account</p>
 
     <button mat-button (click)="closeCardLog()" class="close-button">
       <mat-icon>close</mat-icon>
@@ -35,10 +37,11 @@
   </div>
 
   <div class="createAccount"></div>
-  <div class="example-button-row1">
-    <button mat-flat-button color="primary">Create Account!</button>
+  <div class="example-button-row2">
+    <button mat-flat-button color="primary" (click)="goToRegister()" >Create Account!</button>
 
   </div>
+
 
 
 

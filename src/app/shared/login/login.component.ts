@@ -1,3 +1,4 @@
+import { Router, RouterModule } from '@angular/router';
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
@@ -8,8 +9,10 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class LoginComponent {
   cardVisible = true;
+  isRegistering = false;
 
-  constructor(public dialog: MatDialog){
+  constructor(public dialog: MatDialog,
+    private router: Router){
 
   }
 
@@ -22,6 +25,9 @@ export class LoginComponent {
   }
 
 
+  goToRegister() {
+    this.isRegistering = true;
+  }
 
 
 }
