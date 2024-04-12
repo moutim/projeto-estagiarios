@@ -4,11 +4,12 @@ mat-card-header{
   border-radius: 8px;
 }
 
-p{
+.tituloLog{
   color: white;
-  padding-top: 8px;
+  padding-top: 10px;
   z-index: 4 !important;
   font-size: 40px;
+  font-weight: bold;
 
   user-select: none;
   -webkit-user-select: none;

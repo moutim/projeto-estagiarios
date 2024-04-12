@@ -1,12 +1,10 @@
-<cadastro  *ngIf="isRegistering" ></cadastro>
-
-<mat-card *ngIf=" !isRegistering " class="cardVisible">
+<mat-card *ngIf="isRegistering"  class="cardVisible">
   <video autoplay muted loop id="myVideo">
-    <source src="../../../assets/videoHome.mov" type="video/mp4">
+    <source src="../../../assets/videoHome.mov" type="video/mp4" />
   </video>
 
   <mat-card-header>
-    <p style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif">FilmControl Account</p>
+    <p class="tituloLog">FilmControl Account</p>
 
     <button mat-button (click)="closeCardLog()" class="close-button">
       <mat-icon>close</mat-icon>
@@ -15,34 +13,27 @@
 
   <div class="inputLog">
     <mat-form-field>
-      <mat-label>Enter your email</mat-label>
-      <input matInput
-             placeholder="pat@example.com">
+      <mat-label>Insira seu Email*</mat-label>
+      <input matInput placeholder="pat@example.com" />
     </mat-form-field>
 
     <mat-form-field>
-      <mat-label>Enter your password</mat-label>
-      <input matInput
-             placeholder="123">
+      <mat-label>Insira sua senha*</mat-label>
+      <input matInput placeholder="123" />
     </mat-form-field>
-
-
-
   </div>
 
   <div class="checkoutLog"></div>
   <div class="example-button-row">
-    <button mat-flat-button color="primary">Start Session!</button>
-
+    <button mat-flat-button color="primary">Iniciar Sessão!</button>
   </div>
 
   <div class="createAccount"></div>
   <div class="example-button-row2">
-    <button mat-flat-button color="primary" (click)="goToRegister()" >Create Account!</button>
-
+    <button mat-flat-button color="primary" (click)="goToRegister()">
+      Criar Conta!
+    </button>
   </div>
-
-
-
-
 </mat-card>
+
+<cadastro *ngIf="!isRegistering"></cadastro>

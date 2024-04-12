@@ -1,12 +1,13 @@
 
 
 
-p{
-  color: white ;
+.tituloCad{
+  color: whitesmoke ;
   padding-top: 8px;
   z-index: 4 !important;
   font-size: 40px;
   z-index: 1;
+  font-weight: bold;
 
   user-select: none;
   -webkit-user-select: none;
@@ -22,27 +23,21 @@ p{
   right: 2px;
 
 }
-#myVideo {
-  position: absolute;
-  width: 98vh;
-  height: 100%;
-  z-index: 0;
-  top: 0;
-  left: 0;
 
-
+.cardVisible{
+  background-image: url('../../../assets/download.jfif') ; /* Adiciona um fundo azul claro */
+  width: 100%; /* Aumenta a largura do cartão */
+  height: 400px; /* Aumenta a altura do cartão */
 }
 
 mat-card{
-
   display: flex;
   position: relative;
-
   align-items: center;
   flex-direction: column;
-  width: 650px;
+  width: 950px;
   height: 100%;
-  overflow:hidden;
+  overflow: hidden;
 }
 
 .inputLog{
@@ -52,12 +47,43 @@ mat-card{
   align-items: center;
   padding: 5px;
   width: 60%;
-
-
-
 }
 mat-form-field{
   width: 100%;
+  font-size: 18px;
+
+
+}
+ form{
+   padding: 50px;
+ }
+::ng-deep .mat-form-field-wrapper {
+  padding-bottom: 0.25em; /* Reduz a altura do campo de entrada */
+}
+
+::ng-deep .mat-form-field-label {
+  color: white; /* Muda a cor do rótulo para branco */
+  font-size: 18px;
+}
+
+::ng-deep .mat-form-field-underline {
+  background-color: white; /* Muda a cor da linha inferior para branco */
+}
+
+::ng-deep .mat-form-field-ripple {
+  background-color: white; /* Muda a cor da linha de foco para branco */
+}
+
+
+::ng-deep .mat-input-element {
+  color: white; /* Muda a cor do texto de entrada para branco */
+  font-size: 18px; /* Aumenta o tamanho da fonte */
+}
+
+.matStepperPrevious{
+
+  background-color: aqua;
+
 }
 
 .BtnCadastro{
@@ -65,29 +91,16 @@ mat-form-field{
   flex-direction: row;
   margin-bottom: 10px;
 }
-.example-button-row {
 
-  flex-direction: row;
-
-
-  width: 100%;
-  border-radius: 8px;
-  z-index: 1;
-
-  :hover{
-   background:  lightblue;
-
-  }
-}
 .example-button-row2{
-
-
+  padding: 3px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
   flex-direction: row;
-
   width: 500px;
-  border-radius: 8px;
+  border-radius: 15px;
   z-index: 1;
-
   :hover{
     background:  lightblue;
 
