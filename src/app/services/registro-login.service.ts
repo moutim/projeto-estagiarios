@@ -2,14 +2,14 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class RegistroLoginService {
   isRegistering: boolean = true;
 
-  constructor() { }
+  constructor() {}
 
-  changeRegistering(){
+  changeRegistering() {
     this.isRegistering = !this.isRegistering;
   }
 }

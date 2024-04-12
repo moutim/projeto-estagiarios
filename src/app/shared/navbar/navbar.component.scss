@@ -6,6 +6,24 @@
   margin: 0 15px;
 }
 
+.inputSearch{
+  display: flex;
+  align-items: center;
+  text-align: right;
+
+  height: 70px;
+  width: 590px;
+  padding-left: 190px;
+  padding-top: 30px;
+
+
+}
+.mat-icon{
+  align-items: center;
+  padding-right: 15px;
+}
+
+
 .navbar {
   h1 {
     margin-right: 20px;
