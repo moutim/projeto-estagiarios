@@ -1,0 +1,36 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<!-- Trending Movies Section -->
+<h2 class="section-title">Trending Movies This Week</h2>
+<div class="movie-section">
+  <button mat-icon-button (click)="goPrevious(stepper)" class="left-button">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+  <mat-horizontal-stepper linear #stepper class="movie-stepper">
+    <mat-step *ngFor="let group of trendingMoviesFilter">
+      <div class="movies-group">
+        <app-movie-card *ngFor="let movie of group" [movie]="movie"></app-movie-card>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
+  <button mat-icon-button (click)="goNext(stepper)" class="right-button">
+    <mat-icon>arrow_forward</mat-icon>
+  </button>
+</div>
+
+<!-- Top Rated Movies Section -->
+<h2 class="section-title">Top Rated Movies</h2>
+<div class="movie-section">
+  <button mat-icon-button (click)="goPrevious(topRatedStepper)" class="left-button">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+  <mat-horizontal-stepper linear #topRatedStepper class="movie-stepper">
+    <mat-step *ngFor="let group of topRatedMoviesFilter">
+      <div class="movies-group">
+        <app-movie-card *ngFor="let movie of group" [movie]="movie"></app-movie-card>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
+  <button mat-icon-button (click)="goNext(topRatedStepper)" class="right-button">
+    <mat-icon>arrow_forward</mat-icon>
+  </button>
+</div>

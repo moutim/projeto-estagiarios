@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 import {MatDialog} from '@angular/material/dialog';
 import { LoginComponent } from '../login/login.component';
@@ -8,7 +9,7 @@ import { clear } from 'console';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrl: './navbar.component.scss'
+  styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent {
   value = '';
@@ -16,8 +17,12 @@ export class NavbarComponent {
 
   _stopClear = false;
 
-  constructor(public dialog: MatDialog){
+  constructor(public dialog: MatDialog, private router: Router){
 
+  }
+
+  navigateTo(route: string): void {
+    this.router.navigate([route]);
   }
 
   clearInput(){
@@ -45,7 +50,6 @@ export class NavbarComponent {
 
 
   }
-
 
 
 }

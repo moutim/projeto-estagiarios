@@ -1,0 +1,418 @@
+{
+    "page": 1,
+    "results": [
+        {
+            "adult": false,
+            "backdrop_path": "/xOMo8BRK7PfcJv9JCnx7s5hj0PX.jpg",
+            "id": 693134,
+            "title": "Dune: Part Two",
+            "original_language": "en",
+            "original_title": "Dune: Part Two",
+            "overview": "Follow the mythic journey of Paul Atreides as he unites with Chani and the Fremen while on a path of revenge against the conspirators who destroyed his family. Facing a choice between the love of his life and the fate of the known universe, Paul endeavors to prevent a terrible future only he can foresee.",
+            "poster_path": "/1pdfLvkbY9ohJlCjQH2CZjjYVvJ.jpg",
+            "media_type": "movie",
+            "genre_ids": [
+                878,
+                12
+            ],
+            "popularity": 2706.697,
+            "release_date": "2024-02-27",
+            "video": false,
+            "vote_average": 8.337,
+            "vote_count": 2611
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/1XDDXPXGiI8id7MrUxK36ke7gkX.jpg",
+            "id": 1011985,
+            "title": "Kung Fu Panda 4",
+            "original_language": "en",
+            "original_title": "Kung Fu Panda 4",
+            "overview": "Po is gearing up to become the spiritual leader of his Valley of Peace, but also needs someone to take his place as Dragon Warrior. As such, he will train a new kung fu practitioner for the spot and will encounter a villain called the Chameleon who conjures villains from the past.",
+            "poster_path": "/kDp1vUBnMpe8ak4rjgl3cLELqjU.jpg",
+            "media_type": "movie",
+            "genre_ids": [
+                16,
+                28,
+                12,
+                35,
+                10751
+            ],
+            "popularity": 2962.347,
+            "release_date": "2024-03-02",
+            "video": false,
+            "vote_average": 6.864,
+            "vote_count": 729
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/j3Z3XktmWB1VhsS8iXNcrR86PXi.jpg",
+            "id": 823464,
+            "title": "Godzilla x Kong: The New Empire",
+            "original_language": "en",
+            "original_title": "Godzilla x Kong: The New Empire",
+            "overview": "Following their explosive showdown, Godzilla and Kong must reunite against a colossal undiscovered threat hidden within our world, challenging their very existence – and our own.",
+            "poster_path": "/tMefBSflR6PGQLv7WvFPpKLZkyk.jpg",
+            "media_type": "movie",
+            "genre_ids": [
+                28,
+                878,
+                12,
+                14
+            ],
+            "popularity": 2637.292,
+            "release_date": "2024-03-27",
+            "video": false,
+            "vote_average": 6.742,
+            "vote_count": 539
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/lzWHmYdfeFiMIY4JaMmtR7GEli3.jpg",
+            "id": 438631,
+            "title": "Dune",
+            "original_language": "en",
+            "original_title": "Dune",
+            "overview": "Paul Atreides, a brilliant and gifted young man born into a great destiny beyond his understanding, must travel to the most dangerous planet in the universe to ensure the future of his family and his people. As malevolent forces explode into conflict over the planet's exclusive supply of the most precious resource in existence-a commodity capable of unlocking humanity's greatest potential-only those who can conquer their fear will survive.",
+            "poster_path": "/d5NXSklXo0qyIYkgV94XAgMIckC.jpg",
+            "media_type": "movie",
+            "genre_ids": [
+                878,
+                12
+            ],
+            "popularity": 672.418,
+            "release_date": "2021-09-15",
+            "video": false,
+            "vote_average": 7.789,
+            "vote_count": 11165
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/oe7mWkvYhK4PLRNAVSvonzyUXNy.jpg",
+            "id": 359410,
+            "title": "Road House",
+            "original_language": "en",
+            "original_title": "Road House",
+            "overview": "Ex-UFC fighter Dalton takes a job as a bouncer at a Florida Keys roadhouse, only to discover that this paradise is not all it seems.",
+            "poster_path": "/bXi6IQiQDHD00JFio5ZSZOeRSBh.jpg",
+            "media_type": "movie",
+            "genre_ids": [
+                28,
+                53
+            ],
+            "popularity": 1348.852,
+            "release_date": "2024-03-08",
+            "video": false,
+            "vote_average": 7.066,
+            "vote_count": 1340
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/bQS43HSLZzMjZkcHJz4fGc7fNdz.jpg",
+            "id": 792307,
+            "title": "Poor Things",
+            "original_language": "en",
+            "original_title": "Poor Things",
+            "overview": "Brought back to life by an unorthodox scientist, a young woman runs off with a debauched lawyer on a whirlwind adventure across the continents. Free from the prejudices of her times, she grows steadfast in her purpose to stand for equality and liberation.",
+            "poster_path": "/kCGlIMHnOm8JPXq3rXM6c5wMxcT.jpg",
+            "media_type": "movie",
+            "genre_ids": [
+                878,
+                10749,
+                35
+            ],
+            "popularity": 438.768,
+            "release_date": "2023-12-07",
+            "video": false,
+            "vote_average": 7.809,
+            "vote_count": 3020
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/pwGmXVKUgKN13psUjlhC9zBcq1o.jpg",
+            "id": 634492,
+            "title": "Madame Web",
+            "original_language": "en",
+            "original_title": "Madame Web",
+            "overview": "Forced to confront revelations about her past, paramedic Cassandra Webb forges a relationship with three young women destined for powerful futures...if they can all survive a deadly present.",
+            "poster_path": "/rULWuutDcN5NvtiZi4FRPzRYWSh.jpg",
+            "media_type": "movie",
+            "genre_ids": [
+                28,
+                14
+            ],
+            "popularity": 1034.081,
+            "release_date": "2024-02-14",
+            "video": false,
+            "vote_average": 5.671,
+            "vote_count": 1027
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/8ohejkcQkNgkJgLn71Ws6Kd35g0.jpg",
+            "id": 872585,
+            "title": "Oppenheimer",
+            "original_language": "en",
+            "original_title": "Oppenheimer",
+            "overview": "The story of J. Robert Oppenheimer's role in the development of the atomic bomb during World War II.",
+            "poster_path": "/8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg",
+            "media_type": "movie",
+            "genre_ids": [
+                18,
+                36
+            ],
+            "popularity": 468.622,
+            "release_date": "2023-07-19",
+            "video": false,
+            "vote_average": 8.112,
+            "vote_count": 7590
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/qxUPV5u7pqg4jAGvie7UJvaOio6.jpg",
+            "id": 1083658,
+            "title": "Scoop",
+            "original_language": "en",
+            "original_title": "Scoop",
+            "overview": "Inspired by real events, this fictional dramatization gives an insider account of how the women of Newsnight secured Prince Andrew's infamous interview.",
+            "poster_path": "/agWt9bJzr2m1HY3A5InxXveUyIe.jpg",
+            "media_type": "movie",
+            "genre_ids": [
+                18
+            ],
+            "popularity": 261.326,
+            "release_date": "2024-03-27",
+            "video": false,
+            "vote_average": 6.329,
+            "vote_count": 35
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/deLWkOLZmBNkm8p16igfapQyqeq.jpg",
+            "id": 763215,
+            "title": "Damsel",
+            "original_language": "en",
+            "original_title": "Damsel",
+            "overview": "A young woman's marriage to a charming prince turns into a fierce fight for survival when she's offered up as a sacrifice to a fire-breathing dragon.",
+            "poster_path": "/AgHbB9DCE9aE57zkHjSmseszh6e.jpg",
+            "media_type": "movie",
+            "genre_ids": [
+                14,
+                28,
+                12
+            ],
+            "popularity": 631.895,
+            "release_date": "2024-03-07",
+            "video": false,
+            "vote_average": 7.133,
+            "vote_count": 1505
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/mIBG74mhGEJnBubhYLkCtvplcNr.jpg",
+            "id": 437342,
+            "title": "The First Omen",
+            "original_language": "en",
+            "original_title": "The First Omen",
+            "overview": "When a young American woman is sent to Rome to begin a life of service to the church, she encounters a darkness that causes her to question her own faith and uncovers a terrifying conspiracy that hopes to bring about the birth of evil incarnate.",
+            "poster_path": "/cIzk6GhxEZuweekGFXWEoAyuaMX.jpg",
+            "media_type": "movie",
+            "genre_ids": [
+                27
+            ],
+            "popularity": 539.068,
+            "release_date": "2024-04-03",
+            "video": false,
+            "vote_average": 6.978,
+            "vote_count": 46
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/TGsfNWkASegCfAn6ED1b08a9O6.jpg",
+            "id": 1125311,
+            "title": "Imaginary",
+            "original_language": "en",
+            "original_title": "Imaginary",
+            "overview": "When Jessica moves back into her childhood home with her family, her youngest stepdaughter Alice develops an eerie attachment to a stuffed bear named Chauncey she finds in the basement. Alice starts playing games with Chauncey that begin playful and become increasingly sinister. As Alice’s behavior becomes more and more concerning, Jessica intervenes only to realize Chauncey is much more than the stuffed toy bear she believed him to be.",
+            "poster_path": "/9u6HEtZJdZDjPGGJq6YEuhPnoan.jpg",
+            "media_type": "movie",
+            "genre_ids": [
+                27,
+                9648,
+                53
+            ],
+            "popularity": 703.569,
+            "release_date": "2024-03-06",
+            "video": false,
+            "vote_average": 6.183,
+            "vote_count": 178
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/e3gVl1gnxEFKLTF6pn6KRqUPi9K.jpg",
+            "id": 1127166,
+            "title": "The Tearsmith",
+            "original_language": "it",
+            "original_title": "Fabbricante di lacrime",
+            "overview": "Adopted together after a tough childhood in an orphanage, Nica and Rigel realize that unexpected but irresistible feelings pull them together.",
+            "poster_path": "/uoBHsxSgfc3PQsSn98RfnbePHOy.jpg",
+            "media_type": "movie",
+            "genre_ids": [
+                10749,
+                18
+            ],
+            "popularity": 464.534,
+            "release_date": "2024-04-03",
+            "video": false,
+            "vote_average": 7.009,
+            "vote_count": 225
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/5cCfqeUH2f5Gnu7Lh9xepY9TB6x.jpg",
+            "id": 967847,
+            "title": "Ghostbusters: Frozen Empire",
+            "original_language": "en",
+            "original_title": "Ghostbusters: Frozen Empire",
+            "overview": "The Spengler family returns to where it all started – the iconic New York City firehouse – to team up with the original Ghostbusters, who've developed a top-secret research lab to take busting ghosts to the next level. But when the discovery of an ancient artifact unleashes an evil force, Ghostbusters new and old must join forces to protect their home and save the world from a second Ice Age.",
+            "poster_path": "/6faYaQyiBPhqAizldJKq21mIVaE.jpg",
+            "media_type": "movie",
+            "genre_ids": [
+                14,
+                12,
+                35
+            ],
+            "popularity": 259.823,
+            "release_date": "2024-03-20",
+            "video": false,
+            "vote_average": 6.647,
+            "vote_count": 173
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/qekky2LbtT1wtbD5MDgQvjfZQ24.jpg",
+            "id": 984324,
+            "title": "The Wages of Fear",
+            "original_language": "fr",
+            "original_title": "Le salaire de la peur",
+            "overview": "When an explosion at an oil well threatens hundreds of lives, a crack team is called upon to make a deadly desert crossing with nitroglycerine in tow.",
+            "poster_path": "/jFK2ZLQUzo9pea0jfMCHDfvWsx7.jpg",
+            "media_type": "movie",
+            "genre_ids": [
+                28,
+                53
+            ],
+            "popularity": 1387.233,
+            "release_date": "2024-03-28",
+            "video": false,
+            "vote_average": 5.926,
+            "vote_count": 129
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/ehumsuIBbgAe1hg343oszCLrAfI.jpg",
+            "id": 1022796,
+            "title": "Wish",
+            "original_language": "en",
+            "original_title": "Wish",
+            "overview": "Asha, a sharp-witted idealist, makes a wish so powerful that it is answered by a cosmic force – a little ball of boundless energy called Star. Together, Asha and Star confront a most formidable foe - the ruler of Rosas, King Magnifico - to save her community and prove that when the will of one courageous human connects with the magic of the stars, wondrous things can happen.",
+            "poster_path": "/vgJZSqKMXWDDx09iSIStGKfHMku.jpg",
+            "media_type": "movie",
+            "genre_ids": [
+                16,
+                10751,
+                14,
+                12
+            ],
+            "popularity": 320.819,
+            "release_date": "2023-11-13",
+            "video": false,
+            "vote_average": 6.5,
+            "vote_count": 1011
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/b4xaqpUZFUkgyJ1VcFEPXmDML34.jpg",
+            "id": 845783,
+            "title": "Baghead",
+            "original_language": "en",
+            "original_title": "Baghead",
+            "overview": "Following the death of her estranged father, Iris learns she has inherited a run-down, centuries-old pub. She travels to Berlin to identify her father’s body and meet with The Solicitor to discuss the estate. Little does she know, when the deed is signed she will become inextricably tied to an unspeakable entity that resides in the pub’s basement – Baghead – a shape-shifting creature that can transform into the dead.",
+            "poster_path": "/lbOyeiiRYAE6Nm2e7xiNAAaRwZB.jpg",
+            "media_type": "movie",
+            "genre_ids": [
+                27,
+                53
+            ],
+            "popularity": 240.983,
+            "release_date": "2023-12-28",
+            "video": false,
+            "vote_average": 6.585,
+            "vote_count": 53
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/dvpzY91fvfcWSYgb0Xlan2NNLLU.jpg",
+            "id": 560016,
+            "title": "Monkey Man",
+            "original_language": "en",
+            "original_title": "Monkey Man",
+            "overview": "Kid, an anonymous young man who ekes out a meager living in an underground fight club where, night after night, wearing a gorilla mask, he is beaten bloody by more popular fighters for cash. After years of suppressed rage, Kid discovers a way to infiltrate the enclave of the city’s sinister elite. As his childhood trauma boils over, his mysteriously scarred hands unleash an explosive campaign of retribution to settle the score with the men who took everything from him.",
+            "poster_path": "/b4fn3VIdVTT3SX0rFMNFbl5xuvg.jpg",
+            "media_type": "movie",
+            "genre_ids": [
+                28,
+                53
+            ],
+            "popularity": 126.911,
+            "release_date": "2024-04-03",
+            "video": false,
+            "vote_average": 7.554,
+            "vote_count": 46
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/4MCKNAc6AbWjEsM2h9Xc29owo4z.jpg",
+            "id": 866398,
+            "title": "The Beekeeper",
+            "original_language": "en",
+            "original_title": "The Beekeeper",
+            "overview": "One man's campaign for vengeance takes on national stakes after he is revealed to be a former operative of a powerful and clandestine organization known as Beekeepers.",
+            "poster_path": "/A7EByudX0eOzlkQ2FIbogzyazm2.jpg",
+            "media_type": "movie",
+            "genre_ids": [
+                28,
+                53,
+                18
+            ],
+            "popularity": 246.008,
+            "release_date": "2024-01-08",
+            "video": false,
+            "vote_average": 7.482,
+            "vote_count": 1955
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/fGe1ej335XbqN1j9teoDpofpbLX.jpg",
+            "id": 915935,
+            "title": "Anatomy of a Fall",
+            "original_language": "fr",
+            "original_title": "Anatomie d'une chute",
+            "overview": "A woman is suspected of her husband's murder, and their blind son faces a moral dilemma as the sole witness.",
+            "poster_path": "/kQs6keheMwCxJxrzV83VUwFtHkB.jpg",
+            "media_type": "movie",
+            "genre_ids": [
+                53,
+                9648,
+                80
+            ],
+            "popularity": 122.316,
+            "release_date": "2023-08-23",
+            "video": false,
+            "vote_average": 7.63,
+            "vote_count": 1740
+        }
+    ],
+    "total_pages": 1000,
+    "total_results": 20000
+}

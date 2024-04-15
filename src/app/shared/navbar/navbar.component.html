@@ -1,22 +1,17 @@
 <mat-toolbar color="primary" class="navbar">
   <img src="../../assets/logo.png" class="logo">
 
-
-  <div class="btNavbar">
-
-    <button class="buttons-link-header" mat-raised-button color="primary">Home</button>
-    <button class="buttons-link-header" mat-raised-button color="primary">Populares</button>
-    <button class="buttons-link-header" mat-raised-button color="primary">Listas</button>
-
+  <div class="btNavbar"> 
+  <button class="buttons-link-header" mat-raised-button color="primary" (click)="navigateTo('')">Home</button>
+  <button class="buttons-link-header" mat-raised-button color="primary" (click)="navigateTo('populares')">Populares</button>
+  <button class="buttons-link-header" mat-raised-button color="primary" (click)="navigateTo('listas')">Listas</button>
   </div>
-
 
   <mat-form-field class="inputSearch">
 
     <button  (click)="openSearch()" matSuffix mat-icon-button aria-label="search" >
     <mat-icon >search</mat-icon>
     </button>
-
 
     <input id="textInput" [(ngModel)]="value" matInput type="text" placeholder="Pesquisar Filmes e Séries" (keydown)="stopClear()">
 
@@ -30,12 +25,11 @@
   <span class="example-spacer"></span>
 
   <div class="btNavbar">
-
-  <button  mat-raised-button (click)="openLogin()">
+  <span class="example-spacer"></span>
+  <button mat-raised-button (click)="openLogin()">
     Login
     <mat-icon>login</mat-icon>
   </button>
-
 </div>
 
 </mat-toolbar>

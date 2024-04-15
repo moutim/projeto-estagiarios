@@ -12,16 +12,25 @@ import { CommonModule } from '@angular/common';
 import { LoginModule } from './shared/login/login.module';
 import { CadastroModule } from './shared/cadastro/cadastro.module';
 
+import { HomeModule } from './pages/home/home.module';
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
 @NgModule({
   declarations: [
     AppComponent,
+
   ],
   imports: [
     CommonModule,
     BrowserModule,
     AppRoutingModule,
-    NavbarModule,
     LoginModule
+    BrowserAnimationsModule,
+    NavbarModule,
+    HomeModule,
+    HttpClientModule
   ],
   providers: [provideClientHydration(), provideAnimationsAsync()],
   bootstrap: [AppComponent],
