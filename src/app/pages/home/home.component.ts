@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MovieService } from './../../services/movies/movie.service';
 import { FormBuilder, Validators } from '@angular/forms';
+import { MatStepper } from '@angular/material/stepper';
 
 @Component({
   selector: 'app-home',
@@ -85,4 +86,22 @@ export class HomeComponent implements OnInit {
   getMovieImageUrl(path: string): string {
     return `https://image.tmdb.org/t/p/w500${path}`;
   }
+
+  goNext(stepper: MatStepper) {
+    if (stepper.selectedIndex === stepper.steps.length - 1) {
+      stepper.selectedIndex = 0;  // Wrap to the first step
+    } else {
+      stepper.next();
+    }
+  }
+
+  goPrevious(stepper: MatStepper) {
+    if (stepper.selectedIndex === 0) {
+      stepper.selectedIndex = stepper.steps.length - 1;  // Wrap to the last step
+    } else {
+      stepper.previous();
+    }
+  }
 }
+
+

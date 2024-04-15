@@ -10,6 +10,7 @@ import {MatListModule} from '@angular/material/list';
 import { MatStepperModule } from '@angular/material/stepper';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { MovieCarouselModule } from '../../shared/movie-carousel/movie-carousel.module';
 
 @NgModule({
   imports: [
@@ -22,10 +23,15 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     MatListModule,
     MatStepperModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MovieCarouselModule
   ],
-  declarations: [HomeComponent],
+  declarations: [
+    HomeComponent,
+  ],
 
-  exports: [HomeComponent]
+  exports: [
+    HomeComponent,
+  ]
 })
 export class HomeModule { }

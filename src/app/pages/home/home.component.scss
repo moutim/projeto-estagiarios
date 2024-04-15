@@ -1,84 +1,88 @@
+// SCSS for handling the appearance and behavior of the stepper and movie cards
+
+/* Hide default stepper icons and header */
 ::ng-deep .mat-horizontal-stepper-header .mat-step-icon,
 ::ng-deep .mat-horizontal-stepper-header .mat-step-icon-selected,
 ::ng-deep .mat-horizontal-stepper-header-container {
   display: none !important;
 }
 
-::ng-deep .mat-horizontal-content-containe {
+::ng-deep .mat-horizontal-content-container {
   padding: 0 !important;
+  width: 100%;
 }
 
-.invisible{
-  visibility: hidden;
+.section-title {
+  text-align: center;
+  width: 100%;
+  margin: 20px 0;
 }
-
-.mat-horizontal-stepper-header .mat-step-icon,
-.mat-horizontal-stepper-header .mat-step-icon-selected,
-.mat-horizontal-stepper-header-container {
-  display: none !important;
-}
-
 .movie-stepper {
   display: flex;
-  overflow-x: hidden;
-  white-space: nowrap;
-  width: 100%;
+  overflow-x: auto;
+  white-space: wrap;
+  margin: auto;
+  max-width: 80%;
+}
+
+.movie-section {
+  position: relative;
 }
 
 .movies-group {
-  display: contents;
+  display: flex;
   gap: 20px;
-  padding: 10px 0;
-  flex-wrap: nowrap;
+  align-items: stretch;
+  padding: 20px 0;
+  transition: transform 0.3s ease;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.movie-card-container {
+  position: relative;
+  flex: 1;
+  cursor: pointer;
+  transition: flex-basis 0.3s ease, transform 0.3s ease;
+
+  &:hover {
+    z-index: 10;
+    .movie-card-description {
+      display: block;
+      opacity: 1;
+      overflow: hidden;
+      text-overflow: ellipsis; // Use 'ellipsis' to handle overflow text
+    }
+  }
+}
+
+.movie-card-description {
+  display: none;
+  position: absolute;
+  top: 0;
+  height: 93%; // Make sure this is intentional and looks good
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 10px;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.5);
+  transition: opacity 0.3s ease, left 0.3s ease;
+  overflow-y: auto; // Allows scrolling within the description box
 }
 
 .movie-card {
-  flex: 0 0 18vw;
-  max-width: 15vw;
+  width: 100%;
+  height: auto;
   background-color: #000;
   border-radius: 4px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-  overflow: hidden;
-  margin: 0 10px 20px;
-  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-  cursor: pointer;
 }
 
-.movie-card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
-}
-
-.movie-img {
-  width: 90%;
-  height: auto;
-  object-fit: cover;
-}
-
-
-.movie-section .section-title {
-  font-size: 24px;
-  color: #000000;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  margin-bottom: 40px;
-}
-
-.stepper-navigation {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-.stepper-navigation-button {
-  color: #fff;
-  background-color: rgba(0, 0, 0, 0.5);
-  border-radius: 50%;
+.left-button, .right-button {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  z-index: 1000;
+  z-index: 15;
 }
 
 .left-button {
@@ -89,43 +93,34 @@
   right: 0;
 }
 
-.stepper-button {
-  color: #fff;
-  background-color: rgba(0, 0, 0, 0.5);
+.mat-icon-button {
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
   border-radius: 50%;
+  padding: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
 }
 
 
-
-
-button[mat-icon-button] {
-  color: #fff;
-  background-color: rgba(0, 0, 0, 0.5);
-  border-radius: 50%;
-}
-
-button[mat-icon-button][matStepperPrevious] {
-  left: 0;
-}
-
-button[mat-icon-button][matStepperNext] {
-  right: 0;
-}
-
-.movie-section {
-  display: flex;
-  align-items: center;
-  width: 90%;
-  margin: auto;
-}
 
 
 @media (max-width: 768px) {
+  .movie-stepper {
+    max-width: 100%;
+  }
   .movies-group {
     flex-wrap: wrap;
   }
-  .movie-card {
-    flex-basis: 45%;
+  .movie-card-container {
+    flex-basis: 100%;
+    &:hover .movie-card-description {
+      top: 100%;
+      left: 0;
+      width: 100%;
+      overflow-y: auto;
+    }
   }
 }
-
