@@ -1,8 +1,4 @@
-
-<link
-  href="https://fonts.googleapis.com/icon?family=Material+Icons"
-  rel="stylesheet"
-/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
 <!-- Trending Movies Section -->
 <h2 class="section-title">Trending Movies This Week</h2>
 <div class="movie-section">
@@ -12,14 +8,7 @@
   <mat-horizontal-stepper linear #stepper class="movie-stepper">
     <mat-step *ngFor="let group of trendingMoviesFilter">
       <div class="movies-group">
-        <div *ngFor="let movie of group" class="movie-card-container">
-          <img class="movie-card" [src]="getMovieImageUrl(movie.poster_path)" alt="{{ movie.title }}">
-          <div class="movie-card-description">
-            <p>{{ movie.title }}</p>
-            <p>Rating: {{ movie.vote_average }}/10</p>
-            <p>{{ movie.overview | slice:0:250}}...</p>
-          </div>
-        </div>
+        <app-movie-card *ngFor="let movie of group" [movie]="movie"></app-movie-card>
       </div>
     </mat-step>
   </mat-horizontal-stepper>
@@ -37,14 +26,7 @@
   <mat-horizontal-stepper linear #topRatedStepper class="movie-stepper">
     <mat-step *ngFor="let group of topRatedMoviesFilter">
       <div class="movies-group">
-        <div *ngFor="let movie of group" class="movie-card-container">
-          <img class="movie-card" [src]="getMovieImageUrl(movie.poster_path)" alt="{{ movie.title }}">
-          <div class="movie-card-description">
-            <p>{{ movie.title }}</p>
-            <p>Rating: {{ movie.vote_average }}/10</p>
-            <p>{{ movie.overview | slice:0:150 }}...</p>
-          </div>
-        </div>
+        <app-movie-card *ngFor="let movie of group" [movie]="movie"></app-movie-card>
       </div>
     </mat-step>
   </mat-horizontal-stepper>

@@ -11,6 +11,8 @@ import { MatStepperModule } from '@angular/material/stepper';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MovieCarouselModule } from '../../shared/movie-carousel/movie-carousel.module';
+import { MovieCardComponent } from '../../shared/movie-card/movie-card.component';
+import { BrowserModule } from '@angular/platform-browser';
 
 @NgModule({
   imports: [
@@ -24,10 +26,12 @@ import { MovieCarouselModule } from '../../shared/movie-carousel/movie-carousel.
     MatStepperModule,
     MatFormFieldModule,
     MatInputModule,
-    MovieCarouselModule
+    MovieCarouselModule,
+    BrowserModule
   ],
   declarations: [
     HomeComponent,
+    MovieCardComponent,
   ],
 
   exports: [
