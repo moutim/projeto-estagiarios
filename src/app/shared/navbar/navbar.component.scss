@@ -2,16 +2,48 @@
   flex: 1 1 auto;
 }
 
+.btNavbar {
+  :hover {
+    background-color: lightblue;
+    color: black;
+  }
+}
 .buttons-link-header {
   margin: 0 15px;
 }
 
-.navbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between; 
+#textInput {
+  font-size: 20px;
+  color: black;
+  padding-left: 25px;
+}
 
-  h1 {
-    margin-right: 20px;
+.inputSearch {
+  display: flex;
+  width: 600px;
+  padding-left: 270px;
+  padding-top: 25px;
+  align-items: center;
+}
+
+.mat-icon {
+  color: black;
+}
+
+.mat-raised-button {
+  :hover {
+    background-color: lightblue;
+
   }
+}
+
+.logo {
+  padding-top: 4px;
+  padding-bottom: 4px;
+  width: 190px;
+  height: 100px;
+}
+
+#myVideo {
+  position: fixed;
 }

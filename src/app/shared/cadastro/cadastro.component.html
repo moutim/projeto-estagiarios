@@ -1,0 +1,80 @@
+<mat-card class="cardVisible">
+  <mat-card-header>
+    <p class="tituloCad">Crie Sua FilmControl</p>
+    <button mat-icon-button (click)="closeCardLog()" class="close-button">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-card-header>
+
+  <form [formGroup]="registerForm">
+    <mat-horizontal-stepper [linear]="true" #stepper>
+      <mat-step>
+        <ng-template matStepLabel>Nome Completo</ng-template>
+        <mat-form-field>
+          <mat-label>Insira Seu Nome Completo</mat-label>
+          <input
+            matInput
+            formControlName="name"
+            placeholder="David Oliveira De Souza"
+          />
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperNext>Próximo</button>
+        </div>
+      </mat-step>
+
+      <mat-step>
+        <ng-template matStepLabel>Email Principal</ng-template>
+        <mat-form-field>
+          <mat-label>Insira Seu Email</mat-label>
+          <input
+            matInput
+            formControlName="email"
+            placeholder="DavidJr@example.com"
+          />
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Anterior</button>
+          <button mat-button matStepperNext>Próximo</button>
+        </div>
+      </mat-step>
+
+      <mat-step>
+        <ng-template matStepLabel>Crie sua senha</ng-template>
+        <mat-form-field>
+          <mat-label>Insira sua senha</mat-label>
+          <input matInput formControlName="password" placeholder="123 or abc" />
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Anterior</button>
+          <button mat-button matStepperNext>Próximo</button>
+        </div>
+      </mat-step>
+
+      <mat-step>
+        <ng-template matStepLabel>Confirme sua senha</ng-template>
+        <mat-form-field>
+          <mat-label>Insira sua senha novamente</mat-label>
+          <input
+            matInput
+            formControlName="confirmPassword"
+            placeholder="123 or abc"
+          />
+        </mat-form-field>
+
+        <div>
+          <button mat-button matStepperPrevious>Anterior</button>
+          <button mat-button (click)="onSubmit()">Registrar!</button>
+        </div>
+      </mat-step>
+    </mat-horizontal-stepper>
+  </form>
+
+  <div class="BtnCadastro">
+    <div class="example-button-row2">
+      <button mat-flat-button color="primary" (click)="goToLogin()">
+        Já tem uma conta? Conecte-se!
+      </button>
+    </div>
+  </div>
+</mat-card>
