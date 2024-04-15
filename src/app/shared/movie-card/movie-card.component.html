@@ -1,0 +1,8 @@
+<div class="movie-card-container">
+  <img class="movie-card" [src]="getMovieImageUrl(movie.poster_path)" [alt]="movie.title">
+  <div class="movie-card-description">
+    <p>{{ movie.title }}</p>
+    <p>Rating: {{ movie.vote_average }}/10</p>
+    <p>{{ movie.overview | slice:0:250 }}...</p>
+  </div>
+</div>

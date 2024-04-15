@@ -1,13 +1,13 @@
 <mat-toolbar color="primary" class="navbar">
   <h1>Projeto estagiários</h1>
 
-  <button class="buttons-link-header" mat-raised-button color="primary">Home</button>
-  <button class="buttons-link-header" mat-raised-button color="primary">Populares</button>
-  <button class="buttons-link-header" mat-raised-button color="primary">Listas</button>
+  <button class="buttons-link-header" mat-raised-button color="primary" (click)="navigateTo('')">Home</button>
+  <button class="buttons-link-header" mat-raised-button color="primary" (click)="navigateTo('populares')">Populares</button>
+  <button class="buttons-link-header" mat-raised-button color="primary" (click)="navigateTo('listas')">Listas</button>
 
   <span class="example-spacer"></span>
 
-  <button mat-raised-button>
+  <button mat-raised-button (click)="navigateTo('login')">
     Login
     <mat-icon>login</mat-icon>
   </button>
