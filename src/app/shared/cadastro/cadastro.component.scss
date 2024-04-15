@@ -90,19 +90,20 @@ mat-form-field{
   display: flex;
   flex-direction: row;
   margin-bottom: 10px;
+  align-items: center;
 }
 
 .example-button-row2{
-  padding: 3px;
   position: absolute;
-  bottom: 0;
-  right: 0;
-  flex-direction: row;
+  text-align: center;
+  left: 155px;
+  padding: 3px;
   width: 500px;
-  border-radius: 15px;
+  border-radius: 20px;
   z-index: 1;
   :hover{
     background:  lightblue;
+    color: black;
 
    }
 

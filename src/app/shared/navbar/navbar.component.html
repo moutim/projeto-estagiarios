@@ -1,21 +1,42 @@
 <mat-toolbar color="primary" class="navbar">
   <img src="../../assets/logo.png" class="logo">
 
-  <button class="buttons-link-header" mat-raised-button color="primary">Home</button>
-  <button class="buttons-link-header" mat-raised-button color="primary">Populares</button>
-  <button class="buttons-link-header" mat-raised-button color="primary">Listas</button>
+
+  <div class="btNavbar">
+
+    <button class="buttons-link-header" mat-raised-button color="primary">Home</button>
+    <button class="buttons-link-header" mat-raised-button color="primary">Populares</button>
+    <button class="buttons-link-header" mat-raised-button color="primary">Listas</button>
+
+  </div>
+
 
   <mat-form-field class="inputSearch">
-    <mat-icon> search </mat-icon>
-    <input matInput style="font-size: large; padding-top: 1px; " placeholder="Pesquisar filmes e Séries">
+
+    <button  (click)="openSearch()" matSuffix mat-icon-button aria-label="search" >
+    <mat-icon >search</mat-icon>
+    </button>
+
+
+    <input id="textInput" [(ngModel)]="value" matInput type="text" placeholder="Pesquisar Filmes e Séries" (keydown)="stopClear()">
+
+    <button  (click)="clearInput()" matSuffix mat-icon-button aria-label="Clear" >
+      <mat-icon>close</mat-icon>
+    </button>
+
+
   </mat-form-field>
 
   <span class="example-spacer"></span>
 
-  <button  mat-raised-button (click)="openDialog()">
+  <div class="btNavbar">
+
+  <button  mat-raised-button (click)="openLogin()">
     Login
     <mat-icon>login</mat-icon>
   </button>
+
+</div>
 
 </mat-toolbar>
 

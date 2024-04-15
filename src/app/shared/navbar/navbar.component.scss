@@ -2,45 +2,47 @@
   flex: 1 1 auto;
 }
 
+.btNavbar {
+  :hover {
+    background-color: lightblue;
+    color: black;
+  }
+}
 .buttons-link-header {
   margin: 0 15px;
 }
 
-.inputSearch{
+#textInput {
+  font-size: 20px;
+  color: black;
+  padding-left: 25px;
+}
+
+.inputSearch {
   display: flex;
+  width: 600px;
+  padding-left: 270px;
+  padding-top: 25px;
   align-items: center;
-  text-align: right;
-
-  height: 70px;
-  width: 590px;
-  padding-left: 190px;
-  padding-top: 30px;
-
-
-}
-.mat-icon{
-  align-items: center;
-  padding-right: 15px;
 }
 
+.mat-icon {
+  color: black;
+}
 
-.navbar {
-  h1 {
-    margin-right: 20px;
+.mat-raised-button {
+  :hover {
+    background-color: lightblue;
   }
 }
-.logo{
-  padding-top: 35px;
-  width: 200px;
-  height: 180px;
+
+.logo {
+  padding-top: 4px;
+  padding-bottom: 4px;
+  width: 190px;
+  height: 100px;
 }
+
 #myVideo {
   position: fixed;
-
-
-
-
-
 }
-
-

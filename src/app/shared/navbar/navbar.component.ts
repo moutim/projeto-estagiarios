@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 
 import {MatDialog} from '@angular/material/dialog';
 import { LoginComponent } from '../login/login.component';
+import { clear } from 'console';
 
 
 @Component({
@@ -10,16 +11,41 @@ import { LoginComponent } from '../login/login.component';
   styleUrl: './navbar.component.scss'
 })
 export class NavbarComponent {
+  value = '';
+  
+
+  _stopClear = false;
 
   constructor(public dialog: MatDialog){
 
   }
 
-  openDialog(){
+  clearInput(){
+   this.value = '';
+
+
+  }
+
+  stopClear(){
+    if(!this._stopClear){
+      this._stopClear = true;
+    }
+
+
+
+  }
+
+  openSearch(){
+    alert('Não há filmes para serem listados!')
+
+  }
+
+  openLogin(){
     this.dialog.open(LoginComponent);
 
 
   }
+
 
 
 }
