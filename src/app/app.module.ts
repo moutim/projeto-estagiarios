@@ -8,10 +8,12 @@ import { NavbarModule } from './shared/navbar/navbar.module';
 import { HomeModule } from './pages/home/home.module';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ListasComponent } from './pages/listas/listas.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    ListasComponent,
 
   ],
   imports: [
