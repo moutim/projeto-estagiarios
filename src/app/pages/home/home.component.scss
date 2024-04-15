@@ -13,20 +13,25 @@
 }
 
 .section-title {
-  text-align: center;
   width: 100%;
-  margin: 20px 0;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  padding-left: 10%;
+  font-size: 24px;
 }
+
 .movie-stepper {
   display: flex;
   overflow-x: auto;
   white-space: wrap;
   margin: auto;
   max-width: 80%;
+
 }
 
 .movie-section {
   position: relative;
+
 }
 
 .movies-group {
@@ -34,7 +39,7 @@
   gap: 20px;
   align-items: stretch;
   padding: 20px 0;
-  transition: transform 0.3s ease;
+
   width: 100%;
   box-sizing: border-box;
 }
@@ -45,13 +50,18 @@
   cursor: pointer;
   transition: flex-basis 0.3s ease, transform 0.3s ease;
 
+
   &:hover {
     z-index: 10;
+
     .movie-card-description {
       display: block;
       opacity: 1;
       overflow: hidden;
-      text-overflow: ellipsis; // Use 'ellipsis' to handle overflow text
+      text-overflow: ellipsis;
+      transform: translateY(0%);
+      visibility: visible;
+
     }
   }
 }
@@ -60,18 +70,19 @@
   display: none;
   position: absolute;
   top: 0;
-  height: 93%; // Make sure this is intentional and looks good
+  height: 93%;
   background-color: rgba(0, 0, 0, 0.8);
   color: white;
   padding: 10px;
   border-radius: 0 4px 4px 0;
   box-shadow: 2px 0 8px rgba(0, 0, 0, 0.5);
-  transition: opacity 0.3s ease, left 0.3s ease;
-  overflow-y: auto; // Allows scrolling within the description box
+  visibility: hidden;
+  overflow-y: auto;
 }
 
 .movie-card {
   width: 100%;
+
   height: auto;
   background-color: #000;
   border-radius: 4px;
@@ -86,11 +97,11 @@
 }
 
 .left-button {
-  left: 0;
+  left: 6%;
 }
 
 .right-button {
-  right: 0;
+  right: 6%;
 }
 
 .mat-icon-button {
