@@ -1,0 +1,11 @@
+<div class="movie-lists-container">
+  <h2>My Movie Lists</h2>
+  <div *ngFor="let movie of movies" class="movie-item">
+    <img [src]="getMovieImageUrl(movie.poster_path)" [alt]="movie.title">
+    <div>
+      <h3>{{ movie.title }}</h3>
+      <button (click)="addToWatchedList(movie)">Already Watched</button>
+      <button (click)="addToWatchList(movie)">Want to Watch</button>
+    </div>
+  </div>
+</div>
