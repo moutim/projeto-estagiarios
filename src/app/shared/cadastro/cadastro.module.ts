@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { CadastroComponent } from './cadastro.component';
 import { MatCard, MatCardModule } from '@angular/material/card';
 import { MatIcon } from '@angular/material/icon';
-import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { MatFormField, MatFormFieldModule, MatLabel } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule, Validators, FormBuilder } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import {MatStepperModule} from '@angular/material/stepper';
+import { FormGroup } from '@angular/forms';
 
 
 
@@ -28,6 +29,10 @@ import {MatStepperModule} from '@angular/material/stepper';
     MatButtonModule,
     MatCard,
     MatStepperModule,
+    MatFormFieldModule,
+    
+
+
   ],
   exports: [
     CadastroComponent
