@@ -8,12 +8,11 @@ import { NavbarModule } from './shared/navbar/navbar.module';
 import { HomeModule } from './pages/home/home.module';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ListasComponent } from './pages/listas/listas.component';
+import { ListasModule } from './pages/listas/listas.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ListasComponent,
 
   ],
   imports: [
@@ -22,7 +21,8 @@ import { ListasComponent } from './pages/listas/listas.component';
     BrowserAnimationsModule,
     NavbarModule,
     HomeModule,
-    HttpClientModule
+    HttpClientModule,
+    ListasModule
 
   ],
   providers: [

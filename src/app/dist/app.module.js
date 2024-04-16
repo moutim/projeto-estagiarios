@@ -16,7 +16,7 @@ var navbar_module_1 = require("./shared/navbar/navbar.module");
 var home_module_1 = require("./pages/home/home.module");
 var http_1 = require("@angular/common/http");
 var animations_1 = require("@angular/platform-browser/animations");
-var listas_component_1 = require("./pages/listas/listas.component");
+var listas_module_1 = require("./pages/listas/listas.module");
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -24,7 +24,6 @@ var AppModule = /** @class */ (function () {
         core_1.NgModule({
             declarations: [
                 app_component_1.AppComponent,
-                listas_component_1.ListasComponent,
             ],
             imports: [
                 platform_browser_1.BrowserModule,
@@ -32,7 +31,8 @@ var AppModule = /** @class */ (function () {
                 animations_1.BrowserAnimationsModule,
                 navbar_module_1.NavbarModule,
                 home_module_1.HomeModule,
-                http_1.HttpClientModule
+                http_1.HttpClientModule,
+                listas_module_1.ListasModule
             ],
             providers: [
                 platform_browser_1.provideClientHydration(),

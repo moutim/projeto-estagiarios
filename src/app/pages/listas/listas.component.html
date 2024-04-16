@@ -1,11 +1,51 @@
-<div class="movie-lists-container">
-  <h2>My Movie Lists</h2>
-  <div *ngFor="let movie of movies" class="movie-item">
-    <img [src]="getMovieImageUrl(movie.poster_path)" [alt]="movie.title">
-    <div>
-      <h3>{{ movie.title }}</h3>
-      <button (click)="addToWatchedList(movie)">Already Watched</button>
-      <button (click)="addToWatchList(movie)">Want to Watch</button>
-    </div>
-  </div>
-</div>
+<!-- Within ListasComponent -->
+<mat-tab-group animationDuration="300ms">
+  <!-- Tab for Watched Movies -->
+  <mat-tab label="Lista de Assistidos">
+    <mat-card>
+      <mat-card-content>
+        <div class="movies-flex-container">
+          <!-- List of watched movies -->
+          <mat-list *ngIf="watchedList.length; else emptyWatched">
+            <mat-list-item *ngFor="let movie of watchedList">
+              <div class="movie-details">
+                <img [src]="movie.poster" alt="Poster of {{ movie.title }}" class="movie-poster">
+                <div class="movie-info">
+                  <h3>{{ movie.title }}</h3>
+                  <p>{{ movie.director }}</p>
+                  <button mat-button (click)="removeFromList(movie, 'watchedList')">Remove</button>
+                </div>
+              </div>
+            </mat-list-item>
+          </mat-list>
+          <!-- Placeholder when no movies are watched -->
+          <ng-template #emptyWatched><p>No watched movies. Add some!</p></ng-template>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </mat-tab>
+  <!-- Tab for Movies to Watch -->
+  <mat-tab label="Desejo Assistir">
+    <mat-card>
+      <mat-card-content>
+        <div class="movies-flex-container">
+          <!-- List of movies to watch -->
+          <mat-list *ngIf="watchList.length; else emptyWantToWatch">
+            <mat-list-item *ngFor="let movie of watchList">
+              <div class="movie-details">
+                <img [src]="movie.poster" alt="Poster of {{ movie.title }}" class="movie-poster">
+                <div class="movie-info">
+                  <h3>{{ movie.title }}</h3>
+                  <p>{{ movie.director }}</p>
+                  <button mat-button (click)="removeFromList(movie, 'watchList')">Remove</button>
+                </div>
+              </div>
+            </mat-list-item>
+          </mat-list>
+          <!-- Placeholder when the wish list is empty -->
+          <ng-template #emptyWantToWatch><p>No movies on the wish list. Add some!</p></ng-template>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </mat-tab>
+</mat-tab-group>
