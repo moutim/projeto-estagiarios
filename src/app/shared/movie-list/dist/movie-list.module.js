@@ -9,9 +9,6 @@ exports.__esModule = true;
 exports.MovieListModule = void 0;
 var core_1 = require("@angular/core");
 var common_1 = require("@angular/common");
-var tabs_1 = require("@angular/material/tabs");
-var card_1 = require("@angular/material/card");
-var list_1 = require("@angular/material/list");
 var MovieListModule = /** @class */ (function () {
     function MovieListModule() {
     }
@@ -19,9 +16,6 @@ var MovieListModule = /** @class */ (function () {
         core_1.NgModule({
             imports: [
                 common_1.CommonModule,
-                tabs_1.MatTabsModule,
-                card_1.MatCardModule,
-                list_1.MatListModule
             ]
         })
     ], MovieListModule);

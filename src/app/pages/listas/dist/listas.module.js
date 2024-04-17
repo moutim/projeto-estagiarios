@@ -14,6 +14,10 @@ var tabs_1 = require("@angular/material/tabs");
 var card_1 = require("@angular/material/card");
 var list_1 = require("@angular/material/list");
 var shared_components_module_1 = require("../../shared/shared-components/shared-components.module");
+var forms_1 = require("@angular/forms");
+var form_field_1 = require("@angular/material/form-field");
+var input_1 = require("@angular/material/input");
+var autocomplete_1 = require("@angular/material/autocomplete");
 var ListasModule = /** @class */ (function () {
     function ListasModule() {
     }
@@ -25,7 +29,11 @@ var ListasModule = /** @class */ (function () {
                 tabs_1.MatTabsModule,
                 card_1.MatCardModule,
                 list_1.MatListModule,
-                shared_components_module_1.SharedComponentsModule
+                shared_components_module_1.SharedComponentsModule,
+                forms_1.FormsModule,
+                form_field_1.MatFormFieldModule,
+                input_1.MatInputModule,
+                autocomplete_1.MatAutocompleteModule
             ]
         })
     ], ListasModule);

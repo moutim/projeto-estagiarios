@@ -9,25 +9,21 @@ exports.__esModule = true;
 exports.ListasComponent = void 0;
 var core_1 = require("@angular/core");
 var ListasComponent = /** @class */ (function () {
-    function ListasComponent(MovieService) {
-        this.MovieService = MovieService;
+    function ListasComponent(movieService) {
+        this.movieService = movieService;
         this.movies = [];
         this.watchedList = [];
         this.watchList = [];
+        this.searchWatched = '';
+        this.searchWatchList = '';
+        this.filteredWatchedMovies = [];
+        this.filteredWatchListMovies = [];
     }
     ListasComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.MovieService.getTrendingMovies().subscribe(function (data) {
+        this.movieService.getTrendingMovies().subscribe(function (data) {
             _this.movies = data.results;
         });
-    };
-    ListasComponent.prototype.addToWatchedList = function (movie) {
-        this.watchedList.push(movie);
-        // Optionally, remove from watchList if present
-    };
-    ListasComponent.prototype.addToWatchList = function (movie) {
-        this.watchList.push(movie);
-        // Optionally, remove from watchedList if present
     };
     ListasComponent.prototype.removeFromList = function (movie, listType) {
         if (listType === 'watchedList') {
@@ -36,6 +32,18 @@ var ListasComponent = /** @class */ (function () {
         else if (listType === 'watchList') {
             this.watchList = this.watchList.filter(function (m) { return m.id !== movie.id; });
         }
+    };
+    ListasComponent.prototype.filterWatchedMovies = function () {
+        this.filteredWatchedMovies = this.filterMovies(this.watchedList, this.searchWatched);
+    };
+    ListasComponent.prototype.filterWatchListMovies = function () {
+        this.filteredWatchListMovies = this.filterMovies(this.watchList, this.searchWatchList);
+    };
+    ListasComponent.prototype.filterMovies = function (list, search) {
+        if (!search) {
+            return list;
+        }
+        return list.filter(function (movie) { return movie.title.toLowerCase().includes(search.toLowerCase()); });
     };
     ListasComponent = __decorate([
         core_1.Component({
