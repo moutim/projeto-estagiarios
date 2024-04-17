@@ -6,29 +6,35 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 exports.__esModule = true;
-exports.ListasModule = void 0;
+exports.SharedComponentsModule = void 0;
 var core_1 = require("@angular/core");
 var common_1 = require("@angular/common");
-var listas_component_1 = require("./listas.component");
+var movie_card_component_1 = require("../movie-card/movie-card.component");
+var movie_list_component_1 = require("../movie-list/movie-list.component");
 var tabs_1 = require("@angular/material/tabs");
 var card_1 = require("@angular/material/card");
 var list_1 = require("@angular/material/list");
-var shared_components_module_1 = require("../../shared/shared-components/shared-components.module");
-var ListasModule = /** @class */ (function () {
-    function ListasModule() {
+var SharedComponentsModule = /** @class */ (function () {
+    function SharedComponentsModule() {
     }
-    ListasModule = __decorate([
+    SharedComponentsModule = __decorate([
         core_1.NgModule({
-            declarations: [listas_component_1.ListasComponent],
+            declarations: [
+                movie_card_component_1.MovieCardComponent,
+                movie_list_component_1.MovieListComponent
+            ],
             imports: [
                 common_1.CommonModule,
                 tabs_1.MatTabsModule,
                 card_1.MatCardModule,
-                list_1.MatListModule,
-                shared_components_module_1.SharedComponentsModule
+                list_1.MatListModule
+            ],
+            exports: [
+                movie_card_component_1.MovieCardComponent,
+                movie_list_component_1.MovieListComponent
             ]
         })
-    ], ListasModule);
-    return ListasModule;
+    ], SharedComponentsModule);
+    return SharedComponentsModule;
 }());
-exports.ListasModule = ListasModule;
+exports.SharedComponentsModule = SharedComponentsModule;

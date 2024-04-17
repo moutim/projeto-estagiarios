@@ -1,0 +1,13 @@
+<mat-list *ngIf="movies && movies.length; else emptyList">
+  <mat-list-item *ngFor="let movie of movies">
+    <div class="movie-details">
+      <img [src]="movie.poster" alt="Poster of {{ movie.title }}" class="movie-poster">
+      <div class="movie-info">
+        <h3>{{ movie.title }}</h3>
+        <p>{{ movie.director }}</p>
+        <button mat-button (click)="removeMovie?.(movie)">Remove</button>
+      </div>
+    </div>
+  </mat-list-item>
+</mat-list>
+<ng-template #emptyList><p>No movies in the list. Add some!</p></ng-template>

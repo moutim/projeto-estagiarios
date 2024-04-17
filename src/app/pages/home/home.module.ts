@@ -11,8 +11,8 @@ import { MatStepperModule } from '@angular/material/stepper';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MovieCarouselModule } from '../../shared/movie-carousel/movie-carousel.module';
-import { MovieCardComponent } from '../../shared/movie-card/movie-card.component';
 import { BrowserModule } from '@angular/platform-browser';
+import { SharedComponentsModule } from '../../shared/shared-components/shared-components.module';
 
 @NgModule({
   imports: [
@@ -27,11 +27,11 @@ import { BrowserModule } from '@angular/platform-browser';
     MatFormFieldModule,
     MatInputModule,
     MovieCarouselModule,
-    BrowserModule
+    BrowserModule,
+    SharedComponentsModule
   ],
   declarations: [
-    HomeComponent,
-    MovieCardComponent,
+    HomeComponent
   ],
 
   exports: [

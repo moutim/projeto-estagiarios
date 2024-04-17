@@ -6,29 +6,25 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 exports.__esModule = true;
-exports.ListasModule = void 0;
+exports.MovieCardModule = void 0;
 var core_1 = require("@angular/core");
 var common_1 = require("@angular/common");
-var listas_component_1 = require("./listas.component");
 var tabs_1 = require("@angular/material/tabs");
 var card_1 = require("@angular/material/card");
 var list_1 = require("@angular/material/list");
-var shared_components_module_1 = require("../../shared/shared-components/shared-components.module");
-var ListasModule = /** @class */ (function () {
-    function ListasModule() {
+var MovieCardModule = /** @class */ (function () {
+    function MovieCardModule() {
     }
-    ListasModule = __decorate([
+    MovieCardModule = __decorate([
         core_1.NgModule({
-            declarations: [listas_component_1.ListasComponent],
             imports: [
                 common_1.CommonModule,
                 tabs_1.MatTabsModule,
                 card_1.MatCardModule,
-                list_1.MatListModule,
-                shared_components_module_1.SharedComponentsModule
+                list_1.MatListModule
             ]
         })
-    ], ListasModule);
-    return ListasModule;
+    ], MovieCardModule);
+    return MovieCardModule;
 }());
-exports.ListasModule = ListasModule;
+exports.MovieCardModule = MovieCardModule;

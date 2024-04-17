@@ -17,6 +17,7 @@ var home_module_1 = require("./pages/home/home.module");
 var http_1 = require("@angular/common/http");
 var animations_1 = require("@angular/platform-browser/animations");
 var listas_module_1 = require("./pages/listas/listas.module");
+var shared_components_module_1 = require("./shared/shared-components/shared-components.module");
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -32,7 +33,8 @@ var AppModule = /** @class */ (function () {
                 navbar_module_1.NavbarModule,
                 home_module_1.HomeModule,
                 http_1.HttpClientModule,
-                listas_module_1.ListasModule
+                listas_module_1.ListasModule,
+                shared_components_module_1.SharedComponentsModule
             ],
             providers: [
                 platform_browser_1.provideClientHydration(),

@@ -9,6 +9,7 @@ import { HomeModule } from './pages/home/home.module';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ListasModule } from './pages/listas/listas.module';
+import { SharedComponentsModule } from './shared/shared-components/shared-components.module';
 
 @NgModule({
   declarations: [
@@ -22,13 +23,13 @@ import { ListasModule } from './pages/listas/listas.module';
     NavbarModule,
     HomeModule,
     HttpClientModule,
-    ListasModule
-
+    ListasModule,
+    SharedComponentsModule
   ],
   providers: [
     provideClientHydration(),
     provideAnimationsAsync()
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }
