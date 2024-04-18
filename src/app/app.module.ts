@@ -28,7 +28,7 @@ import { SharedComponentsModule } from './shared/shared-components/shared-compon
     CommonModule,
     BrowserModule,
     AppRoutingModule,
-    LoginModule
+    LoginModule,
     BrowserAnimationsModule,
     NavbarModule,
     HomeModule,

@@ -1,7 +1,7 @@
 import { Router } from '@angular/router';
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { RegistroLoginService } from '../../services/registro-login.service';
 
 @Component({
@@ -11,41 +11,58 @@ import { RegistroLoginService } from '../../services/registro-login.service';
 })
 export class CadastroComponent {
   cardVisible = true;
+  registerForm: FormGroup;
+  hide = true;
 
   constructor(
     public dialog: MatDialog,
     private router: Router,
-    public registroLoginService: RegistroLoginService
-  ) {}
+    public registroLoginService: RegistroLoginService,
+    private formBuilder: FormBuilder
+  ) {
+    this.registerForm = this.formBuilder.group({
+      name: ['', [Validators.required, Validators.pattern('^[a-zA-Z]{3,}$')]],
+      lastName: ['', [Validators.required, Validators.pattern('^[a-zA-Z]{3,}$')]],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(5)]],
+      confirmPassword: ['', [Validators.required, Validators.minLength(5)]]
+    },     { validator: this.MustMatch('password', 'confirmPassword')    } );
+  }
 
-  registerForm = new FormGroup({
-    name: new FormControl('', [
-      Validators.required,
-      Validators.pattern('^[a-zA-Z ]*$'),
-    ]),
-    email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.required]),
-    confirmPassword: new FormControl('', [Validators.required]),
-  });
+  MustMatch(controlName: string, matchingControlName: string) {
+    return (formGroup: FormGroup) => {
+      const control = formGroup.controls[controlName];
+      const matchingControl = formGroup.controls[matchingControlName];
+
+      if (matchingControl.errors && !matchingControl.errors['mustMatch']) {
+        return;
+      }
+
+      if (control.value !== matchingControl.value) {
+        matchingControl.setErrors({ mustMatch: true });
+      } else {
+        matchingControl.setErrors(null);
+      }
+    };
+  }
 
   onSubmit() {
-    if (this.registerForm.valid && this.passwordsMatch()) {
-      console.log(this.registerForm.value);
+    if (this.registerForm.invalid) {
+      return;
+
     }
+
+    console.log(this.registerForm.value);
   }
 
-  passwordsMatch() {
-    return (
-      this.registerForm.get('password')?.value ===
-      this.registerForm.get('confirmPassword')?.value
-    );
-  }
+
 
   closeCardLog() {
     this.dialog.closeAll();
 
     this.cardVisible = false;
   }
+
   goToLogin() {
     this.registroLoginService.changeRegistering();
   }
