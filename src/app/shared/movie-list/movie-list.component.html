@@ -1,0 +1,19 @@
+<!-- Certifique-se de ter uma verificação que considera tanto a existência da lista de filmes quanto o seu tamanho -->
+<div *ngIf="movies?.length; else emptyList">
+  <mat-list>
+    <mat-list-item *ngFor="let movie of movies">
+      <div class="movie-details">
+        <img [src]="movie.poster" alt="Poster of {{ movie.title }}" class="movie-poster">
+        <div class="movie-info">
+          <h3>{{ movie.title }}</h3>
+          <p>{{ movie.director }}</p>
+          <button mat-button (click)="removeMovie?.(movie)">Remover</button>
+        </div>
+      </div>
+    </mat-list-item>
+  </mat-list>
+</div>
+<!-- ng-template para o cenário onde a lista está vazia -->
+<ng-template #emptyList>
+  <p class="semfilme">Nenhum filme na lista. Adicione algum!</p>
+</ng-template>
