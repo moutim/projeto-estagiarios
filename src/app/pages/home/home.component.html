@@ -1,36 +1,181 @@
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
-<!-- Trending Movies Section -->
-<h2 class="section-title">Trending Movies This Week</h2>
-<div class="movie-section">
-  <button mat-icon-button (click)="goPrevious(stepper)" class="left-button">
-    <mat-icon>arrow_back</mat-icon>
+<link
+  href="https://fonts.googleapis.com/icon?family=Material+Icons"
+  rel="stylesheet"
+/>
+
+<div class="carousel-container">
+  <div
+    *ngFor="let movie of topRatedMovies; let i = index"
+    class="carousel-item"
+    [ngClass]="{ active: i === currentSlide }" 
+  >
+    <img
+      class="d-block w-100"
+      [src]="getMovieImageUrl(movie.poster_path)"
+      alt="First slide"
+    />
+  </div>
+</div>
+
+<h1 class="tituloPrincipal">
+  Bem Vindo Ao FilmControl, <br /><br />
+  encontre os melhores filmes
+  <br />
+  <br />
+  e as melhores séries!
+</h1>
+
+<div class="btnsHome">
+  <button class="BtnDescubra" mat-raised-button matRipple>
+    Descubra filmes e séries
   </button>
-  <mat-horizontal-stepper linear #stepper class="movie-stepper">
-    <mat-step *ngFor="let group of trendingMoviesFilter">
-      <div class="movies-group">
-        <app-movie-card *ngFor="let movie of group" [movie]="movie"></app-movie-card>
-      </div>
-    </mat-step>
-  </mat-horizontal-stepper>
-  <button mat-icon-button (click)="goNext(stepper)" class="right-button">
-    <mat-icon>arrow_forward</mat-icon>
+
+  <button class="BtnFunction" mat-raised-button matRipple>
+    Funcionalidades
   </button>
 </div>
 
-<!-- Top Rated Movies Section -->
-<h2 class="section-title">Top Rated Movies</h2>
-<div class="movie-section">
-  <button mat-icon-button (click)="goPrevious(topRatedStepper)" class="left-button">
-    <mat-icon>arrow_back</mat-icon>
-  </button>
-  <mat-horizontal-stepper linear #topRatedStepper class="movie-stepper">
-    <mat-step *ngFor="let group of topRatedMoviesFilter">
-      <div class="movies-group">
-        <app-movie-card *ngFor="let movie of group" [movie]="movie"></app-movie-card>
-      </div>
-    </mat-step>
-  </mat-horizontal-stepper>
-  <button mat-icon-button (click)="goNext(topRatedStepper)" class="right-button">
-    <mat-icon>arrow_forward</mat-icon>
-  </button>
+<div class="streaming-platforms">
+  <a href="https://www.primevideo.com/" target="_blank">
+    <img src="https://images.justwatch.com/icon/52449861/s100/amazonprimevideo.%7Bformat%7D/icon.webp" alt="Amazon Prime Video">
+  </a>
+  <a href="https://www.disneyplus.com" target="_blank">
+    <img src="https://images.justwatch.com/icon/313118777/s100/disneyplus.%7Bformat%7D/icon.webp" alt="Disney Plus">
+  </a>
+  <a href="https://www.netflix.com" target="_blank">
+    <img src="https://images.justwatch.com/icon/207360008/s100/netflix.%7Bformat%7D/icon.webp" alt="Netflix">
+  </a>
+  <a href="https://www.starplus.com" target="_blank">
+    <img src="https://images.justwatch.com/icon/250272035/s100/starplus.%7Bformat%7D/icon.webp" alt="Star Plus">
+  </a>
+  <a href="https://www.looke.com.br" target="_blank">
+    <img src="https://images.justwatch.com/icon/755940/s100/looke.%7Bformat%7D/icon.webp" alt="Looke">
+  </a>
+</div>
+
+
+<div class="cardsHome">
+  <mat-card class="example-card1">
+    <mat-card-header>
+      <mat-card-title-group>
+
+        <img class="imgCard"
+          mat-card-md-image
+          src="../../../assets/imgCard1.png"
+
+        />
+
+      </mat-card-title-group>
+    </mat-card-header>
+    <br>
+    <mat-card-subtitle> TUDO NUM ÚNICO LUGAR </mat-card-subtitle>
+    <br>
+    <mat-card-title> O seu guia completo de streaming </mat-card-title>
+    <br>
+    <mat-card-content>
+      <p>
+        Obtenha recomendações pessoais para todos os seus serviços de streaming favoritos.
+        <br>
+           Mostrar-lhe-emos onde ver filmes, séries, e desporto.
+      </p>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="example-card2">
+    <mat-card-header>
+      <mat-card-title-group>
+
+        <img class="imgCard2"
+          mat-card-md-image
+          src="../../../assets/imgCard2.png"
+
+        />
+      </mat-card-title-group>
+    </mat-card-header>
+    <br>
+    <mat-card-subtitle> UMA ÚNICA PESQUISA </mat-card-subtitle>
+    <mat-card-title> Todas as plataformas estão acessíveis numa única busca </mat-card-title>
+
+    <mat-card-content>
+      <p>
+        Deixe de saltar entre serviços de streaming para ver se um filme ou série está disponível.
+        <br>
+        Pode saber tudo com apenas uma pesquisa.
+      </p>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="example-card3">
+    <mat-card-header>
+      <mat-card-title-group>
+
+        <img class="imgCard3"
+          mat-card-md-image
+          src="../../../assets/imgCard3.png"
+
+        />
+      </mat-card-title-group>
+    </mat-card-header>
+    <br>
+    <mat-card-subtitle> UMA ÚNICA WATCHLIST </mat-card-subtitle>
+    <mat-card-title> Combine todas as suas watchlists </mat-card-title>
+    <br>
+    <mat-card-content>
+      <p>
+        Crie uma única watchlist, com todos os serviços de streaming,
+        e todos os filmes e séries que deseja ver em todos os seus dispositivos.
+      </p>
+    </mat-card-content>
+  </mat-card>
+</div>
+<div class="fundoPrincipal">
+  <!-- Trending Movies Section -->
+  <h2 class="section-title">Filmes populares desta semana</h2>
+  <div class="movie-section">
+    <button mat-icon-button (click)="goPrevious(stepper)" class="left-button">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+    <mat-horizontal-stepper linear #stepper class="movie-stepper">
+      <mat-step *ngFor="let group of trendingMoviesFilter">
+        <div class="movies-group">
+          <app-movie-card
+            *ngFor="let movie of group"
+            [movie]="movie"
+          ></app-movie-card>
+        </div>
+      </mat-step>
+    </mat-horizontal-stepper>
+    <button mat-icon-button (click)="goNext(stepper)" class="right-button">
+      <mat-icon>arrow_forward</mat-icon>
+    </button>
+  </div>
+
+  <!-- Top Rated Movies Section -->
+  <h2 class="section-title">Filmes mais bem avaliados</h2>
+  <div class="movie-section">
+    <button
+      mat-icon-button
+      (click)="goPrevious(topRatedStepper)"
+      class="left-button"
+    >
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+    <mat-horizontal-stepper linear #topRatedStepper class="movie-stepper">
+      <mat-step *ngFor="let group of topRatedMoviesFilter">
+        <div class="movies-group">
+          <app-movie-card
+            *ngFor="let movie of group"
+            [movie]="movie"
+          ></app-movie-card>
+        </div>
+      </mat-step>
+    </mat-horizontal-stepper>
+    <button
+      mat-icon-button
+      (click)="goNext(topRatedStepper)"
+      class="right-button"
+    >
+      <mat-icon>arrow_forward</mat-icon>
+    </button>
+  </div>
 </div>
