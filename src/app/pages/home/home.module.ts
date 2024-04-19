@@ -13,6 +13,9 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { MovieCarouselModule } from '../../shared/movie-carousel/movie-carousel.module';
 import { MovieCardComponent } from '../../shared/movie-card/movie-card.component';
 import { BrowserModule } from '@angular/platform-browser';
+import {MatRippleModule} from '@angular/material/core';
+import Swiper from 'swiper';
+
 
 @NgModule({
   imports: [
@@ -27,7 +30,11 @@ import { BrowserModule } from '@angular/platform-browser';
     MatFormFieldModule,
     MatInputModule,
     MovieCarouselModule,
-    BrowserModule
+    BrowserModule,
+    MatRippleModule,
+    
+
+
   ],
   declarations: [
     HomeComponent,

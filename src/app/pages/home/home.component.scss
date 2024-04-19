@@ -1,4 +1,157 @@
-// SCSS for handling the appearance and behavior of the stepper and movie cards
+
+.carousel-container {
+  position: absolute;
+  z-index: -1;
+}
+
+.carousel-item {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  display: none;
+}
+.carousel-item img{
+  height: 620px;
+  width: 99vw !important;
+  object-fit: inherit !important;
+  overflow: hidden !important;
+  filter: blur(3px);
+
+}
+
+.carousel-item.active {
+  opacity: 1;
+  display: block;
+
+}
+
+.tituloPrincipal {
+  padding: 295px 20px 5px 20px;
+  text-align: center;
+  font-family: Lato, Lato-fallback, Arial, sans-serif;
+  font-size: 50px;
+  color: #f8f8f8;
+  font-weight: bold;
+}
+.btnsHome {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 150px;
+  padding-top: 45px;
+  padding-bottom: 45px;
+}
+
+.BtnDescubra {
+  padding: 30px;
+  background-color: #3f51b5;
+  border: 2px solid #3f51b5;
+  color: whiteSmoke;
+  &:hover{
+    background-color: lightblue;
+    color: black;
+  }
+}
+
+.BtnFunction {
+  padding: 30px;
+  background-color: #3f51b5;
+  border: 2px solid #3f51b5;
+  color: whiteSmoke;
+  &:hover{
+    background-color: lightblue;
+    color: black;
+  }
+}
+
+
+.fundoPrincipal {
+
+  background-color: white;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.streaming-platforms{
+  padding-top: 0;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+
+}
+.streaming-platforms img{
+  border-radius: 15px;
+  box-shadow: inset 30px 30px 40px 40px rgb(0, 0, 0);
+
+}
+
+
+
+.cardsHome{
+  background-color: white;
+  display: flex;
+  justify-content: space-around;
+  padding-top: 110px;
+  align-items: center;
+  text-align: center;
+
+
+}
+.example-card1, .example-card2, .example-card3, .streaming-platforms img {
+  transition: transform .2s; /* Animation */
+
+}
+
+.example-card1:hover, .example-card2:hover, .example-card3:hover, .streaming-platforms img:hover {
+  transform: scale(1.1); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
+.example-card1, .example-card2, .example-card3 {
+  background: hsla(0, 0%, 100%, 1);
+  background: linear-gradient(to top, rgba(253, 253, 253, 0) 0%, rgb(189, 189, 189) 100%);
+  background: -moz-linear-gradient(to top, hsla(0, 0%, 100%, 1) 0%, hsla(0, 0%, 42%, 1) 100%);
+  background: -webkit-linear-gradient(to top, hsla(0, 0%, 100%, 1) 0%, hsla(0, 0%, 42%, 1) 100%);
+}
+
+.example-card1{
+  width: 400px;
+  height: 400px;
+
+}
+.imgCard{
+  object-fit: fill;
+  width: 95%;
+  height: 200px;
+  display: flex;
+  align-items: center;
+}
+
+
+.example-card2{
+  width: 400px;
+  height: 400px;
+}
+.imgCard2{
+  object-fit: fill;
+  width: 95%;
+  height: 200px;
+  display: flex;
+  align-items: center;
+
+}
+.example-card3{
+  width: 400px;
+  height: 400px;
+}
+.imgCard3{
+  object-fit: fill;
+  width: 95%;
+  height: 200px;
+  display: flex;
+  align-items: center;
+
+}
+
 
 /* Hide default stepper icons and header */
 ::ng-deep .mat-horizontal-stepper-header .mat-step-icon,
