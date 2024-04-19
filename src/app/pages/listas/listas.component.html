@@ -1,0 +1,33 @@
+<!-- Within ListasComponent -->
+<div class="mat-tab-group-wrapper">
+  <mat-tab-group animationDuration="250ms">
+    <!-- Tab for Watched Movies -->
+    <mat-tab label="Lista de Assistidos">
+      <mat-form-field appearance="outline" class="full-width-input">
+        <mat-label>Pesquisar na lista de assistidos</mat-label>
+        <input matInput [(ngModel)]="searchWatched" placeholder="Pesquisar na lista de assistidos">
+      </mat-form-field>
+      <mat-card>
+        <mat-card-content>
+          <div class="movies-flex-container">
+            <app-movie-list [movies]="filterMovies(watchedList, searchWatched)" [removeMovie]="removeFromList.bind(this, 'watchedList')"></app-movie-list>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </mat-tab>
+    <!-- Tab for Movies to Watch -->
+    <mat-tab label="Desejo Assistir">
+      <mat-form-field appearance="outline" class="full-width-input">
+        <mat-label>Pesquisar na lista de desejos</mat-label>
+        <input matInput [(ngModel)]="searchWatchList" placeholder="Pesquisar na lista de desejos">
+      </mat-form-field>
+      <mat-card>
+        <mat-card-content>
+          <div class="movies-flex-container">
+            <app-movie-list [movies]="filterMovies(watchList, searchWatchList)" [removeMovie]="removeFromList.bind(this, 'watchList')"></app-movie-list>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </mat-tab>
+  </mat-tab-group>
+</div>
