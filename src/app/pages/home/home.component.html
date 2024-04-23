@@ -7,7 +7,7 @@
   <div
     *ngFor="let movie of topRatedMovies; let i = index"
     class="carousel-item"
-    [ngClass]="{ active: i === currentSlide }" 
+    [ngClass]="{ active: i === currentSlide }"
   >
     <img
       class="d-block w-100"
@@ -26,57 +26,68 @@
 </h1>
 
 <div class="btnsHome">
-  <button class="BtnDescubra" mat-raised-button matRipple>
+  <a id="descubraLink" class="BtnDescubra" mat-raised-button href="#listsSection"  matRipple >
     Descubra filmes e séries
-  </button>
+  </a>
 
-  <button class="BtnFunction" mat-raised-button matRipple>
-    Funcionalidades
-  </button>
+  <a id="funcionalidadesLink" class="BtnFunction" mat-raised-button href="#cardsSection" matRipple >  funcionalidades</a>
 </div>
 
 <div class="streaming-platforms">
   <a href="https://www.primevideo.com/" target="_blank">
-    <img src="https://images.justwatch.com/icon/52449861/s100/amazonprimevideo.%7Bformat%7D/icon.webp" alt="Amazon Prime Video">
+    <img
+      src="https://images.justwatch.com/icon/52449861/s100/amazonprimevideo.%7Bformat%7D/icon.webp"
+      alt="Amazon Prime Video"
+    />
   </a>
   <a href="https://www.disneyplus.com" target="_blank">
-    <img src="https://images.justwatch.com/icon/313118777/s100/disneyplus.%7Bformat%7D/icon.webp" alt="Disney Plus">
+    <img
+      src="https://images.justwatch.com/icon/313118777/s100/disneyplus.%7Bformat%7D/icon.webp"
+      alt="Disney Plus"
+    />
   </a>
   <a href="https://www.netflix.com" target="_blank">
-    <img src="https://images.justwatch.com/icon/207360008/s100/netflix.%7Bformat%7D/icon.webp" alt="Netflix">
+    <img
+      src="https://images.justwatch.com/icon/207360008/s100/netflix.%7Bformat%7D/icon.webp"
+      alt="Netflix"
+    />
   </a>
   <a href="https://www.starplus.com" target="_blank">
-    <img src="https://images.justwatch.com/icon/250272035/s100/starplus.%7Bformat%7D/icon.webp" alt="Star Plus">
+    <img
+      src="https://images.justwatch.com/icon/250272035/s100/starplus.%7Bformat%7D/icon.webp"
+      alt="Star Plus"
+    />
   </a>
   <a href="https://www.looke.com.br" target="_blank">
-    <img src="https://images.justwatch.com/icon/755940/s100/looke.%7Bformat%7D/icon.webp" alt="Looke">
+    <img
+      src="https://images.justwatch.com/icon/755940/s100/looke.%7Bformat%7D/icon.webp"
+      alt="Looke"
+    />
   </a>
 </div>
 
-
-<div class="cardsHome">
+<div  *ngIf="dataLoaded" id="cardsSection"   class="cardsHome">
   <mat-card class="example-card1">
     <mat-card-header>
       <mat-card-title-group>
-
-        <img class="imgCard"
+        <img
+          class="imgCard"
           mat-card-md-image
           src="../../../assets/imgCard1.png"
-
         />
-
       </mat-card-title-group>
     </mat-card-header>
-    <br>
+    <br />
     <mat-card-subtitle> TUDO NUM ÚNICO LUGAR </mat-card-subtitle>
-    <br>
+    <br />
     <mat-card-title> O seu guia completo de streaming </mat-card-title>
-    <br>
+    <br />
     <mat-card-content>
       <p>
-        Obtenha recomendações pessoais para todos os seus serviços de streaming favoritos.
-        <br>
-           Mostrar-lhe-emos onde ver filmes, séries, e desporto.
+        Obtenha recomendações pessoais para todos os seus serviços de streaming
+        favoritos.
+        <br />
+        Mostrar-lhe-emos onde ver filmes, séries, e desporto.
       </p>
     </mat-card-content>
   </mat-card>
@@ -84,22 +95,24 @@
   <mat-card class="example-card2">
     <mat-card-header>
       <mat-card-title-group>
-
-        <img class="imgCard2"
+        <img
+          class="imgCard2"
           mat-card-md-image
           src="../../../assets/imgCard2.png"
-
         />
       </mat-card-title-group>
     </mat-card-header>
-    <br>
+    <br />
     <mat-card-subtitle> UMA ÚNICA PESQUISA </mat-card-subtitle>
-    <mat-card-title> Todas as plataformas estão acessíveis numa única busca </mat-card-title>
+    <mat-card-title>
+      Todas as plataformas estão acessíveis numa única busca
+    </mat-card-title>
 
     <mat-card-content>
       <p>
-        Deixe de saltar entre serviços de streaming para ver se um filme ou série está disponível.
-        <br>
+        Deixe de saltar entre serviços de streaming para ver se um filme ou
+        série está disponível.
+        <br />
         Pode saber tudo com apenas uma pesquisa.
       </p>
     </mat-card-content>
@@ -108,27 +121,26 @@
   <mat-card class="example-card3">
     <mat-card-header>
       <mat-card-title-group>
-
-        <img class="imgCard3"
+        <img
+          class="imgCard3"
           mat-card-md-image
           src="../../../assets/imgCard3.png"
-
         />
       </mat-card-title-group>
     </mat-card-header>
-    <br>
+    <br />
     <mat-card-subtitle> UMA ÚNICA WATCHLIST </mat-card-subtitle>
     <mat-card-title> Combine todas as suas watchlists </mat-card-title>
-    <br>
+    <br />
     <mat-card-content>
       <p>
-        Crie uma única watchlist, com todos os serviços de streaming,
-        e todos os filmes e séries que deseja ver em todos os seus dispositivos.
+        Crie uma única watchlist, com todos os serviços de streaming, e todos os
+        filmes e séries que deseja ver em todos os seus dispositivos.
       </p>
     </mat-card-content>
   </mat-card>
 </div>
-<div class="fundoPrincipal">
+<div *ngIf="dataLoaded" id="listsSection"  class="fundoPrincipal">
   <!-- Trending Movies Section -->
   <h2 class="section-title">Filmes populares desta semana</h2>
   <div class="movie-section">

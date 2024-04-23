@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MovieService } from './../../services/movies/movie.service';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MatStepper } from '@angular/material/stepper';
@@ -23,6 +23,11 @@ export class HomeComponent implements OnInit {
   currentSlide = 0;
   slideShowInterval: any;
 
+  dataLoaded = false;
+
+    @ViewChild('cardsSection') cardsSection!: ElementRef;
+    @ViewChild('listsSection') listsSection!: ElementRef;
+
   constructor(
     private movieService: MovieService,
     private _formBuilder: FormBuilder,
@@ -38,14 +43,37 @@ export class HomeComponent implements OnInit {
   });
   isEditable = false;
 
+
+  scrollToCards(): void {
+
+      this.cardsSection.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start' }) ;
+
+  }
+
+  scrollToLists(): void {
+
+      this.listsSection.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  
+
+
+
   ngOnInit() {
+
+
+
     this.movieService.getTrendingMovies().subscribe((data: any) => {
       this.movies = data.results;
+
     });
+
     {
       this.fetchTrendingMovies();
       this.fetchTopRatedMovies();
+
     }
+
+
 
   }
 
@@ -63,6 +91,7 @@ export class HomeComponent implements OnInit {
     this.movieService.getTrendingMovies().subscribe({
       next: (response: any) => {
 
+        this.dataLoaded = true;
         this.trendingMovies = response.results;
         response.results.forEach((item: any, index: number) => {
           let groupIndex = Math.floor(index / 5);
@@ -80,7 +109,7 @@ export class HomeComponent implements OnInit {
   fetchTopRatedMovies(): void {
     this.movieService.getTopRatedMovies().subscribe({
       next: (response: any) => {
-        console.log(response);
+        this.dataLoaded = true;
         this.topRatedMovies = response.results;
         response.results.forEach((item: any, index: number) => {
           let groupIndex = Math.floor(index / 5);
