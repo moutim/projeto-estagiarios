@@ -15,6 +15,8 @@ import { CadastroModule } from './shared/cadastro/cadastro.module';
 import { HomeModule } from './pages/home/home.module';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ListasModule } from './pages/listas/listas.module';
+import { SharedComponentsModule } from './shared/shared-components/shared-components.module';
 
 
 @NgModule({
@@ -30,9 +32,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserAnimationsModule,
     NavbarModule,
     HomeModule,
-    HttpClientModule
+    HttpClientModule,
+    ListasModule,
+    SharedComponentsModule
   ],
-  providers: [provideClientHydration(), provideAnimationsAsync()],
+  providers: [
+    provideClientHydration(),
+    provideAnimationsAsync()
+  ],
+
   bootstrap: [AppComponent],
 })
 export class AppModule {}

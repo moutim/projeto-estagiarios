@@ -11,10 +11,12 @@ import { MatStepperModule } from '@angular/material/stepper';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MovieCarouselModule } from '../../shared/movie-carousel/movie-carousel.module';
-import { MovieCardComponent } from '../../shared/movie-card/movie-card.component';
 import { BrowserModule } from '@angular/platform-browser';
 import {MatRippleModule} from '@angular/material/core';
 import Swiper from 'swiper';
+
+
+import { SharedComponentsModule } from '../../shared/shared-components/shared-components.module';
 
 
 @NgModule({
@@ -32,13 +34,11 @@ import Swiper from 'swiper';
     MovieCarouselModule,
     BrowserModule,
     MatRippleModule,
-    
-
+    SharedComponentsModule
 
   ],
   declarations: [
-    HomeComponent,
-    MovieCardComponent,
+    HomeComponent
   ],
 
   exports: [
