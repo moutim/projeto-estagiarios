@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { RegistroLoginService } from './../../services/registro-login.service';
 import { Router } from '@angular/router';
 import { Component } from '@angular/core';
@@ -12,10 +13,17 @@ export class LoginComponent {
   cardVisible = true;
   isRegistering = this.registroLoginService.isRegistering;
 
+  email: string = '';
+  senha: string = '';
+
+  hide = true;
+
+
   constructor(
     public dialog: MatDialog,
     private router: Router,
-    public registroLoginService: RegistroLoginService
+    public registroLoginService: RegistroLoginService,
+    private httpClient: HttpClient
   ) {}
 
   ngDoCheck() {
@@ -31,5 +39,24 @@ export class LoginComponent {
   goToRegister() {
     this.registroLoginService.changeRegistering();
     this.isRegistering = this.registroLoginService.isRegistering;
+  }
+
+  Logar(){
+    const body = {
+      email: this.email,
+      senha: this.senha
+    }
+    this.httpClient.post('https://asp-net-api-filmes.onrender.com/api/Login', body).subscribe({
+      next: (result) => {
+        console.log(result)
+        this.router.navigate(['/']);
+      },
+      error: (error) => {
+        console.log(error)
+        alert('Falha no login. Por favor, tente novamente.');
+
+      }
+    })
+
   }
 }

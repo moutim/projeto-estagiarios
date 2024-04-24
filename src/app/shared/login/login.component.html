@@ -14,18 +14,23 @@
   <div class="inputLog">
     <mat-form-field>
       <mat-label>Insira seu Email*</mat-label>
-      <input matInput placeholder="pat@example.com" />
+      <input [(ngModel)]="email" matInput placeholder="pat@example.com" />
     </mat-form-field>
 
     <mat-form-field>
       <mat-label>Insira sua senha*</mat-label>
-      <input matInput placeholder="123" />
+      <input [(ngModel)]="senha" matInput [type]="hide ? 'password' : 'text'" formControlName="password" placeholder="123" />
+
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+
+      </button>
     </mat-form-field>
   </div>
 
   <div class="checkoutLog"></div>
   <div class="example-button-row">
-    <button mat-flat-button color="primary">Iniciar Sessão!</button>
+    <button mat-flat-button color="primary" (click)="Logar()">Iniciar Sessão!</button>
   </div>
 
   <div class="createAccount"></div>

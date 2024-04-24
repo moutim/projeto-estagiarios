@@ -47,12 +47,7 @@ export class CadastroComponent {
   }
 
   onSubmit() {
-    if (this.registerForm.invalid) {
-      return;
-
-    }
-
-    console.log(this.registerForm.value);
+   
   }
 
 
