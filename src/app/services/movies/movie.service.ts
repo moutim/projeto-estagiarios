@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-const mockMovieTrending = require('../../mocks/trending-movies-mock.json');
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
+import { ApiResponse, Movie, GenreResponse, Genre } from '../../interfaces/interface';
 
 @Injectable({
   providedIn: 'root'
@@ -12,15 +13,60 @@ export class MovieService {
 
   constructor(private http: HttpClient) {}
 
-  getTrendingMovies(): any {
-    return this.http.get(`${this.baseUrl}/trending/movie/week?api_key=${this.apiKey}`);
-    // return mockMovieTrending;
+    searchMovies(search: string = '', genres: number[] = [], year: string = '', page: number = 1): Observable<Movie[]> {
+    let url = `${this.baseUrl}/discover/movie`;
+    let params = new HttpParams()
+      .set('api_key', this.apiKey)
+      .set('language', 'en-US')
+      .set('page', page.toString());
+
+    if (search) {
+      url = `${this.baseUrl}/search/movie`;
+      params = params.set('query', search);
+    }
+    if (genres.length > 0) {
+      params = params.set('with_genres', genres.join(','));
+    }
+    if (year) {
+      params = params.set('year', year);
+    }
+
+    return this.http.get<ApiResponse>(url, { params })
+      .pipe(map(response => response.results));
   }
 
-  getTopRatedMovies() {
-    return this.http.get (`${this.baseUrl}/movie/top_rated?api_key=${this.apiKey}&language=en-US&page=1`);
+
+  getTrendingMovies(page: number = 1): Observable<Movie[]> {
+    return this.fetchMovies(`${this.baseUrl}/trending/movie/week`, new HttpParams()
+      .set('api_key', this.apiKey)
+      .set('page', page.toString()));
   }
 
+  getTopRatedMovies(page: number = 1): Observable<Movie[]> {
+    return this.fetchMovies(`${this.baseUrl}/movie/top_rated`, new HttpParams()
+      .set('api_key', this.apiKey)
+      .set('page', page.toString()));
+  }
+
+  getGenres(): Observable<Genre[]> {
+    return this.http.get<GenreResponse>(`${this.baseUrl}/genre/movie/list`, {
+      params: new HttpParams().set('api_key', this.apiKey)
+    }).pipe(
+      map(response => response.genres),
+      catchError(this.handleError)
+    );
+  }
+
+  private fetchMovies(url: string, params: HttpParams): Observable<Movie[]> {
+    return this.http.get<{results: Movie[]}>(url, { params })
+      .pipe(
+        map(response => response.results || []),
+        catchError(this.handleError)
+      );
+  }
+
+  private handleError(error: any): Observable<never> {
+    console.error('An error occurred:', error.error.message);
+    return throwError(() => new Error('Something bad happened; please try again later.'));
+  }
 }
-
-

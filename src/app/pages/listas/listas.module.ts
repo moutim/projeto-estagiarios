@@ -22,6 +22,9 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
         MatFormFieldModule,
         MatInputModule,
         MatAutocompleteModule
+  ],
+  exports: [
+      ListasComponent
     ]
 })
 export class ListasModule {}

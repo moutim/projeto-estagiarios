@@ -34,6 +34,9 @@ var ListasModule = /** @class */ (function () {
                 form_field_1.MatFormFieldModule,
                 input_1.MatInputModule,
                 autocomplete_1.MatAutocompleteModule
+            ],
+            exports: [
+                listas_component_1.ListasComponent
             ]
         })
     ], ListasModule);

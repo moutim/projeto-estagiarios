@@ -17,23 +17,27 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ListasModule } from './pages/listas/listas.module';
 import { SharedComponentsModule } from './shared/shared-components/shared-components.module';
+import { MatIconModule } from '@angular/material/icon';
+import { FilmesModule } from './pages/filmes/filmes.module';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-
+    AppComponent
   ],
   imports: [
     CommonModule,
-    BrowserModule,
     AppRoutingModule,
     LoginModule,
     BrowserAnimationsModule,
     NavbarModule,
-    HomeModule,
+    MatIconModule,
     HttpClientModule,
+    HomeModule,
     ListasModule,
+    FilmesModule,
+    MatTooltipModule,
     SharedComponentsModule
   ],
   providers: [

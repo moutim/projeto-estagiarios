@@ -12,6 +12,12 @@ var common_1 = require("@angular/common");
 var tabs_1 = require("@angular/material/tabs");
 var card_1 = require("@angular/material/card");
 var list_1 = require("@angular/material/list");
+var button_1 = require("@angular/material/button");
+var icon_1 = require("@angular/material/icon");
+var input_1 = require("@angular/material/input");
+var tooltip_1 = require("@angular/material/tooltip");
+var movie_card_component_1 = require("./movie-card.component");
+var shared_components_module_1 = require("../shared-components/shared-components.module");
 var MovieCardModule = /** @class */ (function () {
     function MovieCardModule() {
     }
@@ -21,7 +27,16 @@ var MovieCardModule = /** @class */ (function () {
                 common_1.CommonModule,
                 tabs_1.MatTabsModule,
                 card_1.MatCardModule,
-                list_1.MatListModule
+                list_1.MatListModule,
+                button_1.MatButtonModule,
+                icon_1.MatIconModule,
+                input_1.MatInputModule,
+                button_1.MatButtonModule,
+                tooltip_1.MatTooltipModule,
+                shared_components_module_1.SharedComponentsModule
+            ],
+            exports: [
+                movie_card_component_1.MovieCardComponent,
             ]
         })
     ], MovieCardModule);
