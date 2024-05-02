@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* Global styles and stepper adjustments */
 ::ng-deep .mat-horizontal-stepper-header .mat-step-icon,
 ::ng-deep .mat-horizontal-stepper-header .mat-step-icon-selected,
@@ -31,9 +32,7 @@
   flex-wrap: wrap;
   flex-direction: row;
   gap: 20px;
-
 }
-
 
 /* Estilos para os botões de navegação */
 .left-button, .right-button {
@@ -58,28 +57,26 @@
   border-radius: 50%;
   padding: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-  &:hover {
-    background-color: rgba(0, 0, 0, 0.8);
-  }
+}
+.mat-icon-button:hover {
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
 @media (max-width: 1024px) {
   .movies-group > * {
-    flex-basis: calc(33.333% - 20px); // 3 elementos por linha em dispositivos menores
+    flex-basis: calc(33.333% - 20px);
     max-width: calc(33.333% - 20px);
   }
 }
-
 @media (max-width: 768px) {
   .movies-group > * {
-    flex-basis: 50%; // 2 elementos por linha em dispositivos móveis
+    flex-basis: 50%;
     max-width: 50%;
   }
 }
-
 @media (max-width: 480px) {
   .movies-group > * {
-    flex-basis: 100%; // 1 elemento por linha em telas muito pequenas
+    flex-basis: 100%;
     max-width: 100%;
   }
 }

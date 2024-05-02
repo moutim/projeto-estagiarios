@@ -1,0 +1,78 @@
+@charset "UTF-8";
+/* SCSS para os cartões de filme */
+.movie-card-container {
+  flex: 0 0 18%;
+  max-width: 18%;
+  margin: 1%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease-in-out;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+.movie-card-container:hover {
+  transform: scale(1.03);
+}
+.movie-card-container:hover .movie-details {
+  opacity: 1;
+  visibility: visible;
+}
+
+.movie-image {
+  width: 100%;
+  height: auto;
+}
+
+.movie-details {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.75);
+  color: white;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s;
+}
+
+.mat-card-header, .mat-card-content, .mat-card-actions {
+  padding: 10px;
+  color: #fff;
+}
+
+.mat-card-actions {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  display: flex;
+  gap: 10px;
+}
+
+.mat-icon-button {
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #333;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+.mat-icon-button:hover {
+  background-color: white;
+}
+
+@media (max-width: 1024px) {
+  .movie-card-container {
+    flex: 0 0 48%;
+    max-width: 48%;
+  }
+}
+@media (max-width: 768px) {
+  .movie-card-container {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}

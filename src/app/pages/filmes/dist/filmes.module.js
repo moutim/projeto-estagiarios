@@ -6,36 +6,38 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 exports.__esModule = true;
-exports.SharedComponentsModule = void 0;
+exports.FilmesModule = void 0;
 var core_1 = require("@angular/core");
 var common_1 = require("@angular/common");
-var movie_card_component_1 = require("../movie-card/movie-card.component");
-var movie_list_component_1 = require("../movie-list/movie-list.component");
-var toolbar_1 = require("@angular/material/toolbar");
-var icon_1 = require("@angular/material/icon");
-var button_1 = require("@angular/material/button");
 var form_field_1 = require("@angular/material/form-field");
-var forms_1 = require("@angular/forms");
+var input_1 = require("@angular/material/input");
+var icon_1 = require("@angular/material/icon");
+var filmes_component_1 = require("./filmes.component");
+var shared_components_module_1 = require("../../shared/shared-components/shared-components.module");
+var toolbar_1 = require("@angular/material/toolbar");
+var button_1 = require("@angular/material/button");
 var select_1 = require("@angular/material/select");
+var forms_1 = require("@angular/forms");
 var card_1 = require("@angular/material/card");
 var grid_list_1 = require("@angular/material/grid-list");
 var menu_1 = require("@angular/material/menu");
 var list_1 = require("@angular/material/list");
-var SharedComponentsModule = /** @class */ (function () {
-    function SharedComponentsModule() {
+var tooltip_1 = require("@angular/material/tooltip");
+var FilmesModule = /** @class */ (function () {
+    function FilmesModule() {
     }
-    SharedComponentsModule = __decorate([
+    FilmesModule = __decorate([
         core_1.NgModule({
             declarations: [
-                movie_card_component_1.MovieCardComponent,
-                movie_list_component_1.MovieListComponent,
+                filmes_component_1.FilmesComponent
             ],
             imports: [
                 common_1.CommonModule,
-                toolbar_1.MatToolbarModule,
-                icon_1.MatIconModule,
-                button_1.MatButtonModule,
                 form_field_1.MatFormFieldModule,
+                input_1.MatInputModule,
+                icon_1.MatIconModule,
+                toolbar_1.MatToolbarModule,
+                button_1.MatButtonModule,
                 select_1.MatSelectModule,
                 forms_1.FormsModule,
                 forms_1.ReactiveFormsModule,
@@ -43,13 +45,14 @@ var SharedComponentsModule = /** @class */ (function () {
                 grid_list_1.MatGridListModule,
                 menu_1.MatMenuModule,
                 list_1.MatListModule,
+                shared_components_module_1.SharedComponentsModule,
+                tooltip_1.MatTooltipModule
             ],
             exports: [
-                movie_card_component_1.MovieCardComponent,
-                movie_list_component_1.MovieListComponent
+                filmes_component_1.FilmesComponent,
             ]
         })
-    ], SharedComponentsModule);
-    return SharedComponentsModule;
+    ], FilmesModule);
+    return FilmesModule;
 }());
-exports.SharedComponentsModule = SharedComponentsModule;
+exports.FilmesModule = FilmesModule;

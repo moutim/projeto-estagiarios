@@ -1,8 +1,21 @@
-<div class="movie-card-container">
-  <img class="movie-card" [src]="getMovieImageUrl(movie.poster_path)" [alt]="movie.title">
-  <div class="movie-card-description">
-    <p>{{ movie.title }}</p>
-    <p>Rating: {{ movie.vote_average }}/10</p>
+<mat-card class="movie-card-container">
+  <img mat-card-image [src]="getMovieImageUrl(movie.poster_path)" [alt]="movie.title">
+  <mat-card-header>
+    <mat-card-title>{{ movie.title }}</mat-card-title>
+    <mat-card-subtitle>Rating: {{ movie.vote_average }}/10</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
     <p>{{ movie.overview | slice:0:250 }}...</p>
-  </div>
-</div>
+  </mat-card-content>
+  <mat-card-actions align="end">
+    <button mat-icon-button matTooltip="Adicionar aos favoritos" (click)="addFavorite(movie)">
+      <mat-icon>favorite</mat-icon>
+    </button>
+    <button mat-icon-button matTooltip="Marcar como assistido" (click)="markAsWatched(movie)">
+      <mat-icon>visibility</mat-icon>
+    </button>
+    <button mat-icon-button matTooltip="Adicionar à lista de desejos" (click)="addToWatchList(movie)">
+      <mat-icon>playlist_add</mat-icon>
+    </button>
+  </mat-card-actions>
+</mat-card>

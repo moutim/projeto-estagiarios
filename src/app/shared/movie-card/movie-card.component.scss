@@ -1,137 +1,81 @@
-// SCSS for handling the appearance and behavior of the stepper and movie cards
-
-/* Hide default stepper icons and header */
-::ng-deep .mat-horizontal-stepper-header .mat-step-icon,
-::ng-deep .mat-horizontal-stepper-header .mat-step-icon-selected,
-::ng-deep .mat-horizontal-stepper-header-container {
-  display: none !important;
-}
-
-::ng-deep .mat-horizontal-content-container {
-  padding: 0 !important;
-  width: 100%;
-}
-
-.section-title {
-  width: 100%;
-  margin-top: 40px;
-  margin-bottom: 20px;
-  padding-left: 10%;
-  font-size: 24px;
-}
-
-.movie-stepper {
-  display: flex;
-  overflow-x: auto;
-  white-space: wrap;
-  margin: auto;
-  max-width: 80%;
-
-}
-
-.movie-section {
-  position: relative;
-
-}
-
-.movies-group {
-  display: flex;
-  gap: 20px;
-  align-items: stretch;
-  padding: 20px 0;
-
-  width: 100%;
-  box-sizing: border-box;
-}
-
+/* SCSS para os cartões de filme */
 .movie-card-container {
+  flex: 0 0 18%; // Ajusta para que 5 cartões caibam em uma linha, considerando espaços
+  max-width: 18%; // Ajusta a largura máxima para alinhar com o flex-basis
+  margin: 1%; // Pequena margem para respiração entre cartões
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); // Sombra para profundidade
+  transition: transform 0.3s ease-in-out; // Suavização para transformações
   position: relative;
-  flex: 1;
+  overflow: hidden; // Garante que nada saia dos limites do cartão
   cursor: pointer;
-  transition: flex-basis 0.3s ease, transform 0.3s ease;
-
 
   &:hover {
-    z-index: 10;
+    transform: scale(1.03); // Efeito de ampliação ao passar o mouse
 
-    .movie-card-description {
-      display: block;
-      opacity: 1;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      transform: translateY(0%);
+    .movie-details {
+      opacity: 1; // Mostra os detalhes ao passar o mouse
       visibility: visible;
-
     }
   }
 }
 
-.movie-card-description {
-  display: none;
+.movie-image {
+  width: 100%; // Garante que a imagem cubra toda a largura do cartão
+  height: auto; // Mantém a proporção da imagem
+}
+
+.movie-details {
   position: absolute;
   top: 0;
-  height: 93%;
-  background-color: rgba(0, 0, 0, 0.8);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.75); // Fundo escuro para melhor leitura
   color: white;
   padding: 10px;
-  border-radius: 0 4px 4px 0;
-  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  opacity: 0;
   visibility: hidden;
-  overflow-y: auto;
+  transition: opacity 0.3s, visibility 0.3s;
 }
 
-.movie-card {
-  width: 100%;
-
-  height: auto;
-  background-color: #000;
-  border-radius: 4px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+.mat-card-header, .mat-card-content, .mat-card-actions {
+  padding: 10px; // Uniformidade no padding
+  color: #fff; // Cor do texto
 }
 
-.left-button, .right-button {
+.mat-card-actions {
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 15;
-}
-
-.left-button {
-  left: 6%;
-}
-
-.right-button {
-  right: 6%;
+  bottom: 10px;
+  right: 10px;
+  display: flex;
+  gap: 10px;
 }
 
 .mat-icon-button {
-  background-color: rgba(0, 0, 0, 0.6);
-  color: white;
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #333;
   border-radius: 50%;
-  padding: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+
   &:hover {
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: white;
   }
 }
 
-
-
+@media (max-width: 1024px) {
+  .movie-card-container {
+    flex: 0 0 48%; // Ajusta para 2 cartões por linha
+    max-width: 48%;
+  }
+}
 
 @media (max-width: 768px) {
-  .movie-stepper {
-    max-width: 100%;
-  }
-  .movies-group {
-    flex-wrap: wrap;
-  }
   .movie-card-container {
-    flex-basis: 100%;
-    &:hover .movie-card-description {
-      top: 100%;
-      left: 0;
-      width: 100%;
-      overflow-y: auto;
-    }
+    flex: 0 0 100%; // Um cartão por linha em dispositivos móveis
+    max-width: 100%;
   }
 }

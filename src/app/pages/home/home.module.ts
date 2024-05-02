@@ -15,20 +15,20 @@ import { BrowserModule } from '@angular/platform-browser';
 import { SharedComponentsModule } from '../../shared/shared-components/shared-components.module';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatGridListModule,
-    MatCardModule,
-    MatIconModule,
-    MatListModule,
-    MatStepperModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MovieCarouselModule,
-    BrowserModule,
-    SharedComponentsModule
+    imports: [
+      CommonModule,
+      MatToolbarModule,
+      MatButtonModule,
+      MatGridListModule,
+      MatCardModule,
+      MatIconModule,
+      MatListModule,
+      MatStepperModule,
+      MatFormFieldModule,
+      MatInputModule,
+      MovieCarouselModule,
+      BrowserModule,
+      SharedComponentsModule
   ],
   declarations: [
     HomeComponent

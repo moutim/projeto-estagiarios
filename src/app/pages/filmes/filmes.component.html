@@ -1,0 +1,48 @@
+<mat-toolbar color="primary" class="filter-toolbar">
+  <mat-toolbar-row>
+    <form [formGroup]="form" class="filter-form" (ngSubmit)="clearFilters()">
+      <mat-form-field appearance="fill">
+        <mat-label>Genre</mat-label>
+        <mat-select formControlName="genres" multiple>
+          <ng-container *ngIf="(genres$ | async) as genresArray">
+            <mat-option *ngFor="let genre of genresArray" [value]="genre.id">
+              {{ genre.name }}
+            </mat-option>
+          </ng-container>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Year</mat-label>
+        <mat-select formControlName="year">
+          <mat-option *ngFor="let year of years" [value]="year">{{ year }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <button mat-raised-button color="primary" type="submit">Clear Filters</button>
+    </form>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+
+<div class="movies-container">
+  <mat-grid-list cols="5" rowHeight="350px" gutterSize="16px">
+    <mat-grid-tile *ngFor="let movie of movies$ | async">
+      <mat-card class="movie-card" (mouseenter)="hoverEffect(movie.id, true)" (mouseleave)="hoverEffect(movie.id, false)">
+        <img mat-card-image [src]="getPosterUrl(movie.poster_path)" alt="{{ movie.title }} poster">
+        <div class="movie-details" [ngClass]="{'show-details': isHovered}">
+          <div class="movie-title">{{ movie.title }}</div>
+          <div class="movie-rating">Rating: {{ movie.vote_average }}</div>
+          <div class="movie-overview">{{ movie.overview | slice:0:150 }}...</div>
+          <div class="buttons">
+            <button mat-icon-button color="accent" aria-label="Add to Watched List">
+              <mat-icon>visibility</mat-icon>
+            </button>
+            <button mat-icon-button color="primary" aria-label="Add to Wishlist">
+              <mat-icon>favorite_border</mat-icon>
+            </button>
+          </div>
+        </div>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
+

@@ -4,11 +4,14 @@ import path from 'path';
 import { CadastroComponent } from './shared/cadastro/cadastro.component';
 import { LoginComponent } from './shared/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
-
+import { ListasComponent } from './pages/listas/listas.component';
+import { FilmesComponent } from './pages/filmes/filmes.component';
 
 
 const routes: Routes = [
-  { path: '', component: HomeComponent  },
+  { path: '', component: HomeComponent },
+  { path: 'listas', component: ListasComponent },
+  { path: 'filmes', component: FilmesComponent },
 
 ];
 @NgModule({

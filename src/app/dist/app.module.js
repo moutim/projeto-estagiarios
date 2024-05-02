@@ -13,27 +13,36 @@ var app_routing_module_1 = require("./app-routing.module");
 var app_component_1 = require("./app.component");
 var async_1 = require("@angular/platform-browser/animations/async");
 var navbar_module_1 = require("./shared/navbar/navbar.module");
+var common_1 = require("@angular/common");
+var login_module_1 = require("./shared/login/login.module");
 var home_module_1 = require("./pages/home/home.module");
 var http_1 = require("@angular/common/http");
 var animations_1 = require("@angular/platform-browser/animations");
 var listas_module_1 = require("./pages/listas/listas.module");
 var shared_components_module_1 = require("./shared/shared-components/shared-components.module");
+var icon_1 = require("@angular/material/icon");
+var filmes_module_1 = require("./pages/filmes/filmes.module");
+var tooltip_1 = require("@angular/material/tooltip");
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         core_1.NgModule({
             declarations: [
-                app_component_1.AppComponent,
+                app_component_1.AppComponent
             ],
             imports: [
-                platform_browser_1.BrowserModule,
+                common_1.CommonModule,
                 app_routing_module_1.AppRoutingModule,
+                login_module_1.LoginModule,
                 animations_1.BrowserAnimationsModule,
                 navbar_module_1.NavbarModule,
-                home_module_1.HomeModule,
+                icon_1.MatIconModule,
                 http_1.HttpClientModule,
+                home_module_1.HomeModule,
                 listas_module_1.ListasModule,
+                filmes_module_1.FilmesModule,
+                tooltip_1.MatTooltipModule,
                 shared_components_module_1.SharedComponentsModule
             ],
             providers: [
