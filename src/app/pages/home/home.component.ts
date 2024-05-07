@@ -13,12 +13,24 @@ import { MovieCadastro, UserInfo } from '../../interfaces/interface';
 export class HomeComponent implements OnInit {
   trendingMoviesFilter: any[] = [[], [], [], []];
   topRatedMoviesFilter: any[] = [[], [], [], []];
+  userId: number = 0;
 
   constructor(private movieService: MovieService, private bancoDeDadosService: BancoDeDadosService) {}
 
   ngOnInit() {
     this.fetchTrendingMovies();
     this.fetchTopRatedMovies();
+
+    const storageUser = localStorage.getItem('userInfo');
+      type infoUser = {
+      id: number;
+      nome: string;
+      token: string;
+    }
+      if (storageUser) {
+        const infoUser: infoUser = JSON.parse(storageUser);
+        this.userId = infoUser?.id;
+    }
   }
 
   fetchTrendingMovies(): void {
@@ -100,17 +112,16 @@ getMovieImageUrl(path: string): string {
 
   addToWatched(movie: Movie) {
 
-    const userId = 5;
 
 
     const movieCadastro: MovieCadastro = {
-      id: userId,
+      id: this.userId,
       nome: movie.title,
       idAPI: movie.id,
       backdropPath: movie.poster_path,
     };
 
-    this.bancoDeDadosService.adicionarFilmeVisto(userId, movieCadastro).subscribe({
+    this.bancoDeDadosService.adicionarFilmeVisto(this.userId, movieCadastro).subscribe({
       next: (response) => {
         console.log('Filme adicionado à lista de vistos:', response);
       },
@@ -123,17 +134,16 @@ getMovieImageUrl(path: string): string {
 
   addToWishlist(movie: Movie) {
 
-    const userId = 5;
 
 
     const movieCadastro: MovieCadastro = {
-      id: userId,
+      id: this.userId,
       nome: movie.title,
       idAPI: movie.id,
       backdropPath: movie.poster_path,
     };
 
-    this.bancoDeDadosService.adicionarFilmeWatchlist(userId, movieCadastro).subscribe({
+    this.bancoDeDadosService.adicionarFilmeWatchlist(this.userId, movieCadastro).subscribe({
       next: (response) => {
         console.log('Filme adicionado à lista de desejos:', response);
       },

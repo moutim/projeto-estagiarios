@@ -19,8 +19,6 @@ export class ListasComponent implements OnInit {
   constructor(private bancoDeDadosService: BancoDeDadosService, private movieService: MovieService) {}
 
   ngOnInit(): void {
-    this.loadWatchedMovies();
-    this.loadWatchlistMovies();
 
     const storageUser = localStorage.getItem('userInfo');
     type infoUser = {
@@ -29,9 +27,18 @@ export class ListasComponent implements OnInit {
       token: string;
     }
     if (storageUser) {
-      const infoUser: infoUser = JSON.parse(storageUser);
-      this.userId = infoUser?.id;
+      const userInfo: infoUser = JSON.parse(storageUser);
+      console.log(userInfo);
+
+      this.userId = userInfo?.id;
     }
+
+    setTimeout(() => {
+      this.loadWatchedMovies();
+      this.loadWatchlistMovies();
+    }, 200)
+
+
   }
 
   loadWatchedMovies(): void {

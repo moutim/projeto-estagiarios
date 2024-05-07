@@ -14,10 +14,16 @@ var HomeComponent = /** @class */ (function () {
         this.bancoDeDadosService = bancoDeDadosService;
         this.trendingMoviesFilter = [[], [], [], []];
         this.topRatedMoviesFilter = [[], [], [], []];
+        this.userId = 0;
     }
     HomeComponent.prototype.ngOnInit = function () {
         this.fetchTrendingMovies();
         this.fetchTopRatedMovies();
+        var storageUser = localStorage.getItem('userInfo');
+        if (storageUser) {
+            var infoUser = JSON.parse(storageUser);
+            this.userId = infoUser === null || infoUser === void 0 ? void 0 : infoUser.id;
+        }
     };
     HomeComponent.prototype.fetchTrendingMovies = function () {
         var _this = this;
@@ -94,14 +100,13 @@ var HomeComponent = /** @class */ (function () {
         return "https://image.tmdb.org/t/p/w500" + path;
     };
     HomeComponent.prototype.addToWatched = function (movie) {
-        var userId = 5;
         var movieCadastro = {
-            id: userId,
+            id: this.userId,
             nome: movie.title,
             idAPI: movie.id,
             backdropPath: movie.poster_path
         };
-        this.bancoDeDadosService.adicionarFilmeVisto(userId, movieCadastro).subscribe({
+        this.bancoDeDadosService.adicionarFilmeVisto(this.userId, movieCadastro).subscribe({
             next: function (response) {
                 console.log('Filme adicionado à lista de vistos:', response);
             },
@@ -111,14 +116,13 @@ var HomeComponent = /** @class */ (function () {
         });
     };
     HomeComponent.prototype.addToWishlist = function (movie) {
-        var userId = 5;
         var movieCadastro = {
-            id: userId,
+            id: this.userId,
             nome: movie.title,
             idAPI: movie.id,
             backdropPath: movie.poster_path
         };
-        this.bancoDeDadosService.adicionarFilmeWatchlist(userId, movieCadastro).subscribe({
+        this.bancoDeDadosService.adicionarFilmeWatchlist(this.userId, movieCadastro).subscribe({
             next: function (response) {
                 console.log('Filme adicionado à lista de desejos:', response);
             },

@@ -14,7 +14,14 @@ var BancoDeDadosService = /** @class */ (function () {
     function BancoDeDadosService(http) {
         this.http = http;
         this.baseUrl = 'https://asp-net-api-filmes.onrender.com/api';
-        this.token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJhYzliODYzZi01MzI2LTQ1NTItYTY5Yi1lZTFlZTZhNDZlZDQiLCJhdWQiOiJLZXkzMjEiLCJpc3MiOiJLZXkxMjMiLCJuYmYiOjE3MTUwODg2NDksImV4cCI6MTcxNTExMDI0OSwiaWF0IjoxNzE1MDg4NjQ5fQ.LwZJgMgkdPUmVoeGmKjBtzuNQ46fpJiVtA2VzR9jKnQ'; // Substitua pelo seu token fixo
+        this.token = ''; // Substitua pelo seu token fixo
+        this.userId = 0;
+        var storageUser = localStorage.getItem('userInfo');
+        if (storageUser) {
+            var infoUser = JSON.parse(storageUser);
+            console.log(infoUser);
+            this.token = infoUser === null || infoUser === void 0 ? void 0 : infoUser.token;
+        }
     }
     BancoDeDadosService.prototype.cadastrarUsuario = function (usuario) {
         var url = this.baseUrl + "/Cadastro";

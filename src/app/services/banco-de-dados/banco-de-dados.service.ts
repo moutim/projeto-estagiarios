@@ -10,6 +10,7 @@ import { MovieService } from '../movies/movie.service';
 export class BancoDeDadosService {
   private baseUrl = 'https://asp-net-api-filmes.onrender.com/api';
   private token = ''; // Substitua pelo seu token fixo
+  userId: number = 0;
 
   constructor(private http: HttpClient) {
     const storageUser = localStorage.getItem('userInfo');
@@ -20,6 +21,8 @@ export class BancoDeDadosService {
     }
     if (storageUser) {
       const infoUser: infoUser = JSON.parse(storageUser);
+      console.log(infoUser);
+
       this.token = infoUser?.token;
     }
   }

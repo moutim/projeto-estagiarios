@@ -32,11 +32,17 @@ var FilmesComponent = /** @class */ (function () {
         this.currentPage = 1;
         this.loading = false;
         this.hoveredMovieId = null;
+        this.userId = 0;
     }
     FilmesComponent.prototype.ngOnInit = function () {
         this.genres$ = this.movieService.getGenres();
         this.loadInitialMovies();
         this.subscribeToFormChanges();
+        var storageUser = localStorage.getItem('userInfo');
+        if (storageUser) {
+            var infoUser = JSON.parse(storageUser);
+            this.userId = infoUser === null || infoUser === void 0 ? void 0 : infoUser.id;
+        }
     };
     FilmesComponent.prototype.loadInitialMovies = function () {
         var _this = this;
@@ -87,14 +93,13 @@ var FilmesComponent = /** @class */ (function () {
         }
     };
     FilmesComponent.prototype.addToWatched = function (movie) {
-        var userId = 5;
         var movieCadastro = {
-            id: userId,
+            id: this.userId,
             nome: movie.title,
             idAPI: movie.id,
             backdropPath: movie.poster_path
         };
-        this.bancoDeDadosService.adicionarFilmeVisto(userId, movieCadastro).subscribe({
+        this.bancoDeDadosService.adicionarFilmeVisto(this.userId, movieCadastro).subscribe({
             next: function (response) {
                 console.log('Filme adicionado à lista de assistidos:', response);
             },

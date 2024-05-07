@@ -46,8 +46,10 @@ export class LoginComponent {
 
     this.serviceAPI.fazerLogin(body).subscribe({
       next: (result) => {
+
         localStorage.setItem('userInfo', JSON.stringify(result));
         this.dialog.closeAll();
+        
       },
       error: (err) => {
         this.errorLog = err.error.textMessage;

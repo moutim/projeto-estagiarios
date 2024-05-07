@@ -23,6 +23,7 @@ export class FilmesComponent implements OnInit {
   currentPage = 1;
   loading = false;
   hoveredMovieId: number | null = null;
+  userId: number = 0;
 
   constructor(private movieService: MovieService, private bancoDeDadosService: BancoDeDadosService) {}
 
@@ -30,6 +31,18 @@ export class FilmesComponent implements OnInit {
     this.genres$ = this.movieService.getGenres();
     this.loadInitialMovies();
     this.subscribeToFormChanges();
+
+    const storageUser = localStorage.getItem('userInfo');
+      type infoUser = {
+      id: number;
+      nome: string;
+      token: string;
+    }
+      if (storageUser) {
+        const infoUser: infoUser = JSON.parse(storageUser);
+        this.userId = infoUser?.id;
+    }
+
   }
 
   private loadInitialMovies(): void {
@@ -93,16 +106,16 @@ export class FilmesComponent implements OnInit {
     }
   }
   addToWatched(movie: Movie): void {
-    const userId = 5; 
+
 
     const movieCadastro: MovieCadastro = {
-      id: userId,
+      id: this.userId,
       nome: movie.title,
       idAPI: movie.id,
       backdropPath: movie.poster_path,
     };
 
-    this.bancoDeDadosService.adicionarFilmeVisto(userId, movieCadastro).subscribe({
+    this.bancoDeDadosService.adicionarFilmeVisto(this.userId, movieCadastro).subscribe({
       next: (response) => {
         console.log('Filme adicionado à lista de assistidos:', response);
       },

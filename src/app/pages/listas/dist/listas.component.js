@@ -23,14 +23,24 @@ var ListasComponent = /** @class */ (function () {
     function ListasComponent(bancoDeDadosService, movieService) {
         this.bancoDeDadosService = bancoDeDadosService;
         this.movieService = movieService;
-        this.userId = 5; // ID do usuário desejado
+        this.userId = 0; // ID do usuário desejado
         this.watchedList = [];
         this.watchList = [];
         this.imageBaseUrl = 'https://image.tmdb.org/t/p/w500';
+        this.logError = '';
     }
     ListasComponent.prototype.ngOnInit = function () {
-        this.loadWatchedMovies();
-        this.loadWatchlistMovies();
+        var _this = this;
+        var storageUser = localStorage.getItem('userInfo');
+        if (storageUser) {
+            var userInfo = JSON.parse(storageUser);
+            console.log(userInfo);
+            this.userId = userInfo === null || userInfo === void 0 ? void 0 : userInfo.id;
+        }
+        setTimeout(function () {
+            _this.loadWatchedMovies();
+            _this.loadWatchlistMovies();
+        }, 200);
     };
     ListasComponent.prototype.loadWatchedMovies = function () {
         var _this = this;
@@ -39,7 +49,10 @@ var ListasComponent = /** @class */ (function () {
                 console.log(response, 'tttttt');
                 _this.populateMovieDetails(response, 'watchedList');
             },
-            error: function (err) { return console.error('Erro ao obter lista de assistidos:', err); }
+            error: function (err) {
+                _this.logError = err.error.textMessage;
+                console.error('Erro ao obter lista de assistidos:', err);
+            }
         });
     };
     ListasComponent.prototype.loadWatchlistMovies = function () {
@@ -48,7 +61,10 @@ var ListasComponent = /** @class */ (function () {
             next: function (response) {
                 _this.populateMovieDetails(response, 'watchList');
             },
-            error: function (err) { return console.error('Erro ao obter lista de desejos:', err); }
+            error: function (err) {
+                _this.logError = err.error.textMessage;
+                console.error('Erro ao obter lista de assistidos:', err);
+            }
         });
     };
     ListasComponent.prototype.populateMovieDetails = function (movieList, listType) {
