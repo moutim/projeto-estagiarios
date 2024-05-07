@@ -40,6 +40,14 @@ var MovieService = /** @class */ (function () {
         return this.http.get(url, { params: params })
             .pipe(operators_1.map(function (response) { return response.results; }));
     };
+    MovieService.prototype.getMovieDetails = function (movieId) {
+        var url = this.baseUrl + "/movie/" + movieId;
+        var params = new http_1.HttpParams().set('api_key', this.apiKey);
+        return this.http.get(url, { params: params }).pipe(operators_1.catchError(function (error) {
+            console.error('Erro ao buscar detalhes do filme:', error);
+            return rxjs_1.throwError(function () { return new Error('Erro ao buscar detalhes do filme. Verifique a conexão com a internet e a chave de API.'); });
+        }));
+    };
     MovieService.prototype.getTrendingMovies = function (page) {
         if (page === void 0) { page = 1; }
         return this.fetchMovies(this.baseUrl + "/trending/movie/week", new http_1.HttpParams()

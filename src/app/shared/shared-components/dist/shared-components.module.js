@@ -21,6 +21,7 @@ var card_1 = require("@angular/material/card");
 var grid_list_1 = require("@angular/material/grid-list");
 var menu_1 = require("@angular/material/menu");
 var list_1 = require("@angular/material/list");
+var tabs_1 = require("@angular/material/tabs");
 var SharedComponentsModule = /** @class */ (function () {
     function SharedComponentsModule() {
     }
@@ -43,6 +44,7 @@ var SharedComponentsModule = /** @class */ (function () {
                 grid_list_1.MatGridListModule,
                 menu_1.MatMenuModule,
                 list_1.MatListModule,
+                tabs_1.MatTabsModule,
             ],
             exports: [
                 movie_card_component_1.MovieCardComponent,

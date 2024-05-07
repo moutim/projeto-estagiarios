@@ -1,19 +1,73 @@
-.full-width-input {
-  width: 50%;
-  margin: 0 auto;
-  padding-left: 24.99%;
-  padding-top: 20px;
-}
-
-.mat-tab-group {
-  align-items: center;
+@charset "UTF-8";
+.mat-tab-group-wrapper .mat-tab-group {
+  display: flex;
+  flex-wrap: wrap;
+  /* Permitir quebra de linha */
+  gap: 20px;
+  /* Espaçamento entre abas */
   justify-content: center;
+  /* Centralizar as abas */
+  width: 100%;
+  /* Ajuste para preencher toda a largura */
+  height: 100%;
+}
+.mat-tab-group-wrapper .mat-card-content {
+  display: flex;
+  flex-wrap: wrap;
+  /* Permitir quebra de linha */
+  gap: 20px;
+  /* Espaçamento entre itens */
+  justify-content: center;
+  /* Centralizar os itens */
+}
+.mat-tab-group-wrapper .movies-group {
+  display: flex;
+  flex-wrap: wrap;
+  /* Permitir quebra de linha */
+  gap: 20px;
+  /* Espaçamento entre itens */
+  justify-content: center;
+  /* Centralizar os itens na linha */
+  width: 100%;
+  /* Ajuste para preencher toda a largura */
+  height: 100%;
+}
+.mat-tab-group-wrapper .movie-card {
+  flex-basis: calc(20% - 20px);
+  /* 5 pôsteres por linha, ajustando o gap */
+  margin-bottom: 20px;
+  /* Espaçamento inferior */
+  height: 20%;
+  width: 20%;
 }
 
-.mat-form-field-infix {
-  width: 100%;
+.movie-card {
+  height: 1000px;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow 0.3s, transform 0.3s;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
-
-.mat-tab-group {
+.movie-card img {
+  width: 1000px;
+  /* Ajuste para preencher toda a largura */
+  height: 1000px;
+  /* Mantém a proporção original */
+  object-fit: cover;
+  transition: transform 0.3s ease-in-out;
+}
+.movie-card:hover {
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
+  transform: scale(1.01);
+  /* Zoom suave no card */
+}
+.movie-card:hover img {
+  transform: scale(1.1);
+  /* Zoom suave no pôster */
+}
+.movie-card .movie-poster {
   width: 100%;
+  height: auto;
 }

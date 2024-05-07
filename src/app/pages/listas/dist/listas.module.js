@@ -18,6 +18,8 @@ var forms_1 = require("@angular/forms");
 var form_field_1 = require("@angular/material/form-field");
 var input_1 = require("@angular/material/input");
 var autocomplete_1 = require("@angular/material/autocomplete");
+var button_1 = require("@angular/material/button");
+var icon_1 = require("@angular/material/icon");
 var ListasModule = /** @class */ (function () {
     function ListasModule() {
     }
@@ -33,7 +35,9 @@ var ListasModule = /** @class */ (function () {
                 forms_1.FormsModule,
                 form_field_1.MatFormFieldModule,
                 input_1.MatInputModule,
-                autocomplete_1.MatAutocompleteModule
+                autocomplete_1.MatAutocompleteModule,
+                button_1.MatButtonModule,
+                icon_1.MatIconModule
             ],
             exports: [
                 listas_component_1.ListasComponent

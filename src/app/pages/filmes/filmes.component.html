@@ -33,10 +33,10 @@
           <div class="movie-rating">Rating: {{ movie.vote_average }}</div>
           <div class="movie-overview">{{ movie.overview | slice:0:150 }}...</div>
           <div class="buttons">
-            <button mat-icon-button color="accent" aria-label="Add to Watched List">
+            <button mat-icon-button color="accent" aria-label="Add to Watched List" (click)="addToWatched(movie)">
               <mat-icon>visibility</mat-icon>
             </button>
-            <button mat-icon-button color="primary" aria-label="Add to Wishlist">
+            <button mat-icon-button color="primary" aria-label="Add to Wishlist" (click)="addToWishlist(movie)">
               <mat-icon>favorite_border</mat-icon>
             </button>
           </div>
@@ -45,4 +45,3 @@
     </mat-grid-tile>
   </mat-grid-list>
 </div>
-

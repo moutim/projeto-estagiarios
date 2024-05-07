@@ -9,6 +9,8 @@ import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIcon, MatIconModule } from '@angular/material/icon';
 
 @NgModule({
     declarations: [ListasComponent],
@@ -21,7 +23,9 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
         FormsModule,
         MatFormFieldModule,
         MatInputModule,
-        MatAutocompleteModule
+        MatAutocompleteModule,
+        MatButtonModule,
+        MatIconModule
   ],
   exports: [
       ListasComponent

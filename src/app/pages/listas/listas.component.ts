@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { MovieService } from './../../services/movies/movie.service';
+import { BancoDeDadosService } from '../../services/banco-de-dados/banco-de-dados.service';
+import { MovieService } from '../../services/movies/movie.service';
+import { MovieCadastro, MovieDetails } from '../../interfaces/interface';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-listas',
@@ -7,40 +10,90 @@ import { MovieService } from './../../services/movies/movie.service';
   styleUrls: ['./listas.component.scss']
 })
 export class ListasComponent implements OnInit {
-  movies: any[] = [];
-  watchedList: any[] = [];
-  watchList: any[] = [];
-  searchWatched: string = '';
-  searchWatchList: string = '';
-  filteredWatchedMovies: any[] = [];
-  filteredWatchListMovies: any[] = [];
+  userId = 5; // ID do usuário desejado
+  watchedList: MovieDetails[] = [];
+  watchList: MovieDetails[] = [];
+  imageBaseUrl: string = 'https://image.tmdb.org/t/p/w500';
 
-  constructor(private movieService: MovieService) {}
+  constructor(private bancoDeDadosService: BancoDeDadosService, private movieService: MovieService) {}
 
   ngOnInit(): void {
-    this.movieService.getTrendingMovies().subscribe((data: any) => {
-      this.movies = data.results;
+    this.loadWatchedMovies();
+    this.loadWatchlistMovies();
+  }
+
+  loadWatchedMovies(): void {
+    this.bancoDeDadosService.obterFilmesVistos(this.userId).subscribe({
+      next: (response: MovieCadastro[]) => {
+        console.log(response, 'tttttt');
+
+        this.populateMovieDetails(response, 'watchedList');
+      },
+      error: (err: any) => console.error('Erro ao obter lista de assistidos:', err)
     });
   }
 
-  removeFromList(movie: any, listType: 'watchedList' | 'watchList'): void {
-    if (listType === 'watchedList') {
-      this.watchedList = this.watchedList.filter(m => m.id !== movie.id);
-    } else if (listType === 'watchList') {
-      this.watchList = this.watchList.filter(m => m.id !== movie.id);
-    }
+  loadWatchlistMovies(): void {
+    this.bancoDeDadosService.obterListaDesejos(this.userId).subscribe({
+      next: (response: MovieCadastro[]) => {
+        this.populateMovieDetails(response, 'watchList');
+      },
+      error: (err: any) => console.error('Erro ao obter lista de desejos:', err)
+    });
   }
 
-  filterWatchedMovies() {
-    this.filteredWatchedMovies = this.filterMovies(this.watchedList, this.searchWatched);
+  populateMovieDetails(movieList: MovieCadastro[], listType: 'watchedList' | 'watchList'): void {
+    const updatedList: MovieDetails[] = [];
+
+    movieList.forEach((movie) => {
+      this.movieService.getMovieDetails(movie.idAPI).subscribe({
+        next: (details: MovieDetails) => {
+          details = { ...details, ...movie }
+          if (details) {
+
+            updatedList.push(details);
+          }
+            console.log(details, 'details');
+
+          if (listType === 'watchedList') {
+            this.watchedList = updatedList;
+            console.log(this.watchedList, 'assistidos');
+
+          } else if (listType === 'watchList') {
+            this.watchList = updatedList;
+          }
+        },
+        error: (err: any) => console.error('Erro ao obter detalhes do filme:', err)
+      });
+    });
   }
-  filterWatchListMovies() {
-    this.filteredWatchListMovies = this.filterMovies(this.watchList, this.searchWatchList);
+
+  getPosterUrl(posterPath: string): string {
+    return `${this.imageBaseUrl}${posterPath}`;
   }
-  filterMovies(list: any[], search: string): any[] {
-    if (!search) {
-      return list;
-    }
-    return list.filter(movie => movie.title.toLowerCase().includes(search.toLowerCase()));
+
+removeFromList(movie: MovieDetails, listType: 'watchedList' | 'watchList'): void {
+  let removeObservable: Observable<any>;
+
+  if (listType === 'watchedList') {
+    removeObservable = this.bancoDeDadosService.removerFilmeVisto(this.userId, movie.id);
+  } else if (listType === 'watchList') {
+    removeObservable = this.bancoDeDadosService.removerFilmeWatchlist(this.userId, movie.id);
+  } else {
+    console.error('Lista desconhecida:', listType);
+    return;
   }
+
+  removeObservable.subscribe({
+    next: () => {
+      // Atualiza a lista após remover o filme
+      if (listType === 'watchedList') {
+        this.watchedList = this.watchedList.filter(m => m.id !== movie.id);
+      } else {
+        this.watchList = this.watchList.filter(m => m.id !== movie.id);
+      }
+    },
+    error: (err: any) => console.error(`Erro ao remover o filme com ID ${movie.id} da lista ${listType}:`, err)
+  });
+}
 }

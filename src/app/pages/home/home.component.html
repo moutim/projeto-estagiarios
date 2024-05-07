@@ -1,36 +1,87 @@
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
 <!-- Trending Movies Section -->
 <h2 class="section-title">Trending Movies This Week</h2>
 <div class="movie-section">
-  <button mat-icon-button (click)="goPrevious(stepper)" class="left-button">
-    <mat-icon>arrow_back</mat-icon>
-  </button>
-  <mat-horizontal-stepper linear #stepper class="movie-stepper">
-    <mat-step *ngFor="let group of trendingMoviesFilter">
-      <div class="movies-group">
-        <app-movie-card *ngFor="let movie of group" [movie]="movie"></app-movie-card>
-      </div>
-    </mat-step>
-  </mat-horizontal-stepper>
-  <button mat-icon-button (click)="goNext(stepper)" class="right-button">
-    <mat-icon>arrow_forward</mat-icon>
-  </button>
+  <div class="stepper-container">
+    <mat-horizontal-stepper linear #trendingStepper class="movie-stepper">
+      <mat-step *ngFor="let group of trendingMoviesFilter">
+        <div class="movies-group">
+          <div *ngFor="let movie of group" class="movie-card">
+            <img
+              [src]="getMovieImageUrl(movie.poster_path)"
+              alt="{{ movie.title }}"
+              width="150"
+              height="225"
+            />
+            <div class="movie-details">
+              <div class="movie-title">{{ movie.title }}</div>
+              <div class="movie-rating">Rating: {{ movie.vote_average }}</div>
+              <div class="movie-overview">{{ movie.overview | slice: 0:150 }}...</div>
+              <div class="buttons">
+                <!-- Adicionar funcionalidade de adicionar filme à lista de vistos -->
+                <button mat-icon-button color="accent" aria-label="Add to Watched List" (click)="addToWatched(movie)">
+                  <mat-icon>visibility</mat-icon>
+                </button>
+                <!-- Adicionar funcionalidade de adicionar filme à lista de desejos -->
+                <button mat-icon-button color="primary" aria-label="Add to Wishlist" (click)="addToWishlist(movie)">
+                  <mat-icon>favorite_border</mat-icon>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </mat-step>
+    </mat-horizontal-stepper>
+    <div class="navigation-buttons">
+      <button mat-icon-button (click)="goPreviousTrending(trendingStepper)" class="left-button">
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+      <button mat-icon-button (click)="goNextTrending(trendingStepper)" class="right-button">
+        <mat-icon>arrow_forward</mat-icon>
+      </button>
+    </div>
+  </div>
 </div>
 
 <!-- Top Rated Movies Section -->
 <h2 class="section-title">Top Rated Movies</h2>
 <div class="movie-section">
-  <button mat-icon-button (click)="goPrevious(topRatedStepper)" class="left-button">
-    <mat-icon>arrow_back</mat-icon>
-  </button>
-  <mat-horizontal-stepper linear #topRatedStepper class="movie-stepper">
-    <mat-step *ngFor="let group of topRatedMoviesFilter">
-      <div class="movies-group">
-        <app-movie-card *ngFor="let movie of group" [movie]="movie"></app-movie-card>
-      </div>
-    </mat-step>
-  </mat-horizontal-stepper>
-  <button mat-icon-button (click)="goNext(topRatedStepper)" class="right-button">
-    <mat-icon>arrow_forward</mat-icon>
-  </button>
+  <div class="stepper-container">
+    <mat-horizontal-stepper linear #topRatedStepper class="movie-stepper">
+      <mat-step *ngFor="let group of topRatedMoviesFilter">
+        <div class="movies-group">
+          <div *ngFor="let movie of group" class="movie-card">
+            <img
+              [src]="getMovieImageUrl(movie.poster_path)"
+              alt="{{ movie.title }}"
+              width="150"
+              height="225"
+            />
+            <div class="movie-details">
+              <div class="movie-title">{{ movie.title }}</div>
+              <div class="movie-rating">Rating: {{ movie.vote_average }}</div>
+              <div class="movie-overview">{{ movie.overview | slice: 0:150 }}...</div>
+              <div class="buttons">
+                <!-- Adicionar funcionalidade de adicionar filme à lista de vistos -->
+                <button mat-icon-button color="accent" aria-label="Add to Watched List" (click)="addToWatched(movie)">
+                  <mat-icon>visibility</mat-icon>
+                </button>
+                <!-- Adicionar funcionalidade de adicionar filme à lista de desejos -->
+                <button mat-icon-button color="primary" aria-label="Add to Wishlist" (click)="addToWishlist(movie)">
+                  <mat-icon>favorite_border</mat-icon>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </mat-step>
+    </mat-horizontal-stepper>
+    <div class="navigation-buttons">
+      <button mat-icon-button (click)="goPreviousTopRated(topRatedStepper)" class="left-button">
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+      <button mat-icon-button (click)="goNextTopRated(topRatedStepper)" class="right-button">
+        <mat-icon>arrow_forward</mat-icon>
+      </button>
+    </div>
+  </div>
 </div>

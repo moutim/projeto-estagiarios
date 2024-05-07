@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-import { ApiResponse, Movie, GenreResponse, Genre } from '../../interfaces/interface';
+import { ApiResponse, Movie, GenreResponse, Genre, MovieDetails } from '../../interfaces/interface';
 
 @Injectable({
   providedIn: 'root'
@@ -35,6 +35,17 @@ export class MovieService {
       .pipe(map(response => response.results));
   }
 
+getMovieDetails(movieId: number): Observable<MovieDetails> {
+  const url = `${this.baseUrl}/movie/${movieId}`;
+  const params = new HttpParams().set('api_key', this.apiKey);
+
+  return this.http.get<MovieDetails>(url, { params }).pipe(
+    catchError((error) => {
+      console.error('Erro ao buscar detalhes do filme:', error);
+      return throwError(() => new Error('Erro ao buscar detalhes do filme. Verifique a conexão com a internet e a chave de API.'));
+    })
+  );
+}
 
   getTrendingMovies(page: number = 1): Observable<Movie[]> {
     return this.fetchMovies(`${this.baseUrl}/trending/movie/week`, new HttpParams()

@@ -1,31 +1,52 @@
-<!-- Within ListasComponent -->
+<!-- HTML do componente listas.component.html -->
 <div class="mat-tab-group-wrapper">
   <mat-tab-group animationDuration="250ms">
-    <!-- Tab for Watched Movies -->
+    <!-- Tab for Watched List -->
     <mat-tab label="Lista de Assistidos">
-      <mat-form-field appearance="outline" class="full-width-input">
-        <mat-label>Pesquisar na lista de assistidos</mat-label>
-        <input matInput [(ngModel)]="searchWatched" placeholder="Pesquisar na lista de assistidos">
-      </mat-form-field>
       <mat-card>
         <mat-card-content>
-          <div class="movies-flex-container">
-            <app-movie-list [movies]="filterMovies(watchedList, searchWatched)" [removeMovie]="removeFromList.bind(this, 'watchedList')"></app-movie-list>
-          </div>
+          <mat-list>
+            <div class="movies-group">
+              <mat-list-item *ngFor="let movie of watchedList" class="movie-card">
+                <img [src]="getPosterUrl(movie.poster_path)" alt="{{ movie.title }}" class="movie-poster">
+                <div class="movie-details">
+                  <div class="movie-title">{{ movie.title }}</div>
+                  <div class="movie-rating">Nota: {{ movie.vote_average }}</div>
+                  <div class="movie-overview">{{ movie.overview | slice: 0:150 }}...</div>
+                  <div class="buttons">
+                    <button mat-icon-button color="warn" aria-label="Remover da Lista de Assistidos" (click)="removeFromList(movie, 'watchedList')">
+                      <mat-icon>delete</mat-icon>
+                    </button>
+                  </div>
+                </div>
+              </mat-list-item>
+            </div>
+          </mat-list>
         </mat-card-content>
       </mat-card>
     </mat-tab>
-    <!-- Tab for Movies to Watch -->
+
+    <!-- Tab for Watchlist -->
     <mat-tab label="Desejo Assistir">
-      <mat-form-field appearance="outline" class="full-width-input">
-        <mat-label>Pesquisar na lista de desejos</mat-label>
-        <input matInput [(ngModel)]="searchWatchList" placeholder="Pesquisar na lista de desejos">
-      </mat-form-field>
       <mat-card>
         <mat-card-content>
-          <div class="movies-flex-container">
-            <app-movie-list [movies]="filterMovies(watchList, searchWatchList)" [removeMovie]="removeFromList.bind(this, 'watchList')"></app-movie-list>
-          </div>
+          <mat-list>
+            <div class="movies-group">
+              <mat-list-item *ngFor="let movie of watchList" class="movie-card">
+                <img [src]="getPosterUrl(movie.poster_path)" alt="{{ movie.title }}" class="movie-poster">
+                <div class="movie-details">
+                  <div class="movie-title">{{ movie.title }}</div>
+                  <div class="movie-rating">Nota: {{ movie.vote_average }}</div>
+                  <div class="movie-overview">{{ movie.overview | slice: 0:150 }}...</div>
+                  <div class="buttons">
+                    <button mat-icon-button color="warn" aria-label="Remover da Lista de Desejos" (click)="removeFromList(movie, 'watchList')">
+                      <mat-icon>delete</mat-icon>
+                    </button>
+                  </div>
+                </div>
+              </mat-list-item>
+            </div>
+          </mat-list>
         </mat-card-content>
       </mat-card>
     </mat-tab>

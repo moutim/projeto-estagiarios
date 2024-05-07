@@ -19,8 +19,9 @@ var forms_1 = require("@angular/forms");
 var rxjs_1 = require("rxjs");
 var operators_1 = require("rxjs/operators");
 var FilmesComponent = /** @class */ (function () {
-    function FilmesComponent(movieService) {
+    function FilmesComponent(movieService, bancoDeDadosService) {
         this.movieService = movieService;
+        this.bancoDeDadosService = bancoDeDadosService;
         this.form = new forms_1.FormGroup({
             genres: new forms_1.FormControl([]),
             year: new forms_1.FormControl('')
@@ -69,7 +70,7 @@ var FilmesComponent = /** @class */ (function () {
         });
         this.currentPage = 1;
         this.movies$.next([]);
-        this.subscribeToFormChanges(); // Re-subscribe to form value changes after reset
+        this.subscribeToFormChanges();
     };
     FilmesComponent.prototype.getPosterUrl = function (posterPath) {
         return "" + this.imageBaseUrl + posterPath;
@@ -84,6 +85,40 @@ var FilmesComponent = /** @class */ (function () {
         else {
             this.hoveredMovieId = null;
         }
+    };
+    FilmesComponent.prototype.addToWatched = function (movie) {
+        var userId = 5;
+        var movieCadastro = {
+            id: userId,
+            nome: movie.title,
+            idAPI: movie.id,
+            backdropPath: movie.poster_path
+        };
+        this.bancoDeDadosService.adicionarFilmeVisto(userId, movieCadastro).subscribe({
+            next: function (response) {
+                console.log('Filme adicionado à lista de assistidos:', response);
+            },
+            error: function (error) {
+                console.error('Erro ao adicionar filme à lista de assistidos:', error);
+            }
+        });
+    };
+    FilmesComponent.prototype.addToWishlist = function (movie) {
+        var userId = 5; // Substitua pelo ID do usuário real
+        var movieCadastro = {
+            id: userId,
+            nome: movie.title,
+            idAPI: movie.id,
+            backdropPath: movie.poster_path
+        };
+        this.bancoDeDadosService.adicionarFilmeWatchlist(userId, movieCadastro).subscribe({
+            next: function (response) {
+                console.log('Filme adicionado à lista de desejos:', response);
+            },
+            error: function (error) {
+                console.error('Erro ao adicionar filme à lista de desejos:', error);
+            }
+        });
     };
     __decorate([
         core_1.HostListener('window:scroll', ['$event'])

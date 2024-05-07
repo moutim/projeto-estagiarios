@@ -3,7 +3,8 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { debounceTime, distinctUntilChanged, switchMap, tap } from 'rxjs/operators';
 import { MovieService } from '../../services/movies/movie.service';
-import { Genre, Movie } from '../../interfaces/interface';
+import { Genre, Movie, MovieCadastro, UserInfo } from '../../interfaces/interface';
+import { BancoDeDadosService } from '../../services/banco-de-dados/banco-de-dados.service';
 
 @Component({
   selector: 'app-filmes',
@@ -23,7 +24,7 @@ export class FilmesComponent implements OnInit {
   loading = false;
   hoveredMovieId: number | null = null;
 
-  constructor(private movieService: MovieService) {}
+  constructor(private movieService: MovieService, private bancoDeDadosService: BancoDeDadosService) {}
 
   ngOnInit(): void {
     this.genres$ = this.movieService.getGenres();
@@ -73,7 +74,7 @@ export class FilmesComponent implements OnInit {
     });
     this.currentPage = 1;
     this.movies$.next([]);
-    this.subscribeToFormChanges();  // Re-subscribe to form value changes after reset
+    this.subscribeToFormChanges();
   }
 
   getPosterUrl(posterPath: string): string {
@@ -91,4 +92,44 @@ export class FilmesComponent implements OnInit {
       this.hoveredMovieId = null;
     }
   }
+  addToWatched(movie: Movie): void {
+    const userId = 5; 
+
+    const movieCadastro: MovieCadastro = {
+      id: userId,
+      nome: movie.title,
+      idAPI: movie.id,
+      backdropPath: movie.poster_path,
+    };
+
+    this.bancoDeDadosService.adicionarFilmeVisto(userId, movieCadastro).subscribe({
+      next: (response) => {
+        console.log('Filme adicionado à lista de assistidos:', response);
+      },
+      error: (error) => {
+        console.error('Erro ao adicionar filme à lista de assistidos:', error);
+      }
+    });
+  }
+
+  addToWishlist(movie: Movie): void {
+    const userId = 5; // Substitua pelo ID do usuário real
+
+    const movieCadastro: MovieCadastro = {
+      id: userId,
+      nome: movie.title,
+      idAPI: movie.id,
+      backdropPath: movie.poster_path,
+    };
+
+    this.bancoDeDadosService.adicionarFilmeWatchlist(userId, movieCadastro).subscribe({
+      next: (response) => {
+        console.log('Filme adicionado à lista de desejos:', response);
+      },
+      error: (error) => {
+        console.error('Erro ao adicionar filme à lista de desejos:', error);
+      }
+    });
+  }
+
 }

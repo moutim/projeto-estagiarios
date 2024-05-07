@@ -7,16 +7,21 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 exports.__esModule = true;
 exports.MovieListComponent = void 0;
+// movie-list.component.ts
 var core_1 = require("@angular/core");
 var MovieListComponent = /** @class */ (function () {
     function MovieListComponent() {
         this.movies = [];
+        this.removeMovie = new core_1.EventEmitter();
     }
+    MovieListComponent.prototype.onRemove = function (movie) {
+        this.removeMovie.emit(movie);
+    };
     __decorate([
         core_1.Input()
     ], MovieListComponent.prototype, "movies");
     __decorate([
-        core_1.Input()
+        core_1.Output()
     ], MovieListComponent.prototype, "removeMovie");
     MovieListComponent = __decorate([
         core_1.Component({

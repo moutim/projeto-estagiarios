@@ -1,4 +1,6 @@
-import { Component, Input } from '@angular/core';
+// movie-list.component.ts
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { MovieCadastro } from '../../interfaces/interface';
 
 @Component({
   selector: 'app-movie-list',
@@ -6,8 +8,10 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./movie-list.component.scss']
 })
 export class MovieListComponent {
-  @Input() movies: any[] = [];
-  @Input() removeMovie?: (movie: any) => void;
+  @Input() movies: MovieCadastro[] = [];
+  @Output() removeMovie = new EventEmitter<MovieCadastro>();
 
-  constructor() {}
+  onRemove(movie: MovieCadastro): void {
+    this.removeMovie.emit(movie);
+  }
 }

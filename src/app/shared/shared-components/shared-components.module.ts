@@ -16,6 +16,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
 import {MatMenuModule} from '@angular/material/menu';
 import { MatListModule } from '@angular/material/list';
+import { MatTabsModule } from '@angular/material/tabs';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { MatListModule } from '@angular/material/list';
     MatGridListModule,
     MatMenuModule,
     MatListModule,
+    MatTabsModule,
   ],
   exports:[
     MovieCardComponent,

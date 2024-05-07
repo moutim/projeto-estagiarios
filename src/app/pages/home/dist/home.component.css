@@ -11,6 +11,24 @@
   width: 100%;
 }
 
+.stepper-container {
+  position: relative;
+  width: 100%;
+  max-width: 90%;
+  margin: auto;
+}
+
+.navigation-buttons {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none;
+  /* Permite que o stepper interaja, exceto os botões */
+}
+
 .section-title {
   width: 100%;
   margin-top: 40px;
@@ -28,26 +46,46 @@
 }
 
 .movies-group {
-  display: contents;
+  display: flex;
   flex-wrap: wrap;
+  /* Permitir quebra de linha */
   flex-direction: row;
+  /* Alinhar em linhas */
   gap: 20px;
+  /* Espaçamento entre itens */
+  justify-content: center;
+  /* Centralizar os itens na linha */
+}
+
+.movies-group > * {
+  flex-basis: calc(20% - 20px);
+  /* 4 pôsteres por linha, ajustando o gap */
+  max-width: calc(20% - 20px);
+  /* Máximo de 25% menos o gap */
+}
+
+.movies-group img {
+  width: 100%;
+  /* Ajuste para preencher toda a largura */
+  height: auto;
+  /* Mantém a proporção original */
 }
 
 /* Estilos para os botões de navegação */
 .left-button, .right-button {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 15;
+  pointer-events: all;
+  /* Habilitar interação com os botões */
+  z-index: 10;
 }
 
 .left-button {
-  left: 6%;
+  margin-left: -40px;
+  /* Ajuste conforme necessário */
 }
 
 .right-button {
-  right: 6%;
+  margin-right: -40px;
+  /* Ajuste conforme necessário */
 }
 
 /* Estilos para botões de ícones */
@@ -60,6 +98,112 @@
 }
 .mat-icon-button:hover {
   background-color: rgba(0, 0, 0, 0.8);
+}
+
+.movie-card {
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow 0.3s, transform 0.3s;
+  /* Transição de sombra e zoom */
+  margin-bottom: 20px;
+  /* Espaçamento entre os pôsteres */
+  border-radius: 5px;
+  /* Bordas arredondadas */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  /* Sombra leve */
+}
+.movie-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease-in-out;
+  /* Efeito de zoom */
+}
+.movie-card:hover {
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
+  /* Sombra preta mais forte */
+  transform: scale(1.0000001);
+  /* Zoom suave no card */
+}
+.movie-card:hover img {
+  transform: scale(1.01);
+  /* Zoom suave no pôster */
+}
+.movie-card:hover .movie-details {
+  opacity: 1;
+  transform: translateY(0%);
+}
+
+.movie-details {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.8);
+  /* Fundo branco com transparência */
+  color: black;
+  /* Texto preto para contraste */
+  padding: 10px;
+  box-sizing: border-box;
+  opacity: 0;
+  transform: translateY(-100%);
+  transition: opacity 0.3s, transform 0.3s;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  border-radius: 5px;
+  /* Manter consistência com as bordas da imagem */
+}
+
+.movie-title {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.movie-rating {
+  margin-bottom: 5px;
+}
+
+.movie-overview {
+  margin-top: 10px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.buttons button {
+  margin: 0 5px;
+}
+
+.movies-group {
+  display: flex;
+  flex-wrap: wrap;
+  /* Permitir quebra de linha */
+  flex-direction: row;
+  /* Alinhar em linhas */
+  gap: 20px;
+  /* Espaçamento entre itens */
+  justify-content: center;
+  /* Centralizar os itens na linha */
+}
+
+.movies-group > * {
+  flex-basis: calc(20% - 20px);
+  /* 4 pôsteres por linha, ajustando o gap */
+  max-width: calc(20% - 20px);
+  /* Máximo de 25% menos o gap */
+}
+
+.movies-group img {
+  width: 100%;
+  /* Ajuste para preencher toda a largura */
+  height: auto;
+  /* Mantém a proporção original */
 }
 
 @media (max-width: 1024px) {

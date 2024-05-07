@@ -63,3 +63,30 @@ export interface SpokenLanguage {
   iso_639_1: string;
   name: string;
 }
+
+
+export interface WatchlistMovie {
+  id: number;
+  nome: string;
+  idAPI: number;
+  backdropPath: string;
+}
+
+
+export interface WatchedMovie {
+  id: number;
+  nome: string;
+  idAPI: number;
+  backdropPath: string;
+}
+
+export interface MovieCadastro extends WatchlistMovie, WatchedMovie {}
+
+export interface UserInfo {
+  id: number;
+  nome: string;
+  sobrenome: string;
+  email: string;
+  filmeFavorito: string | null;
+}
+

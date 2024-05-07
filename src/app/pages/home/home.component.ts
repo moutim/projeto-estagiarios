@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MovieService } from './../../services/movies/movie.service';
-import { FormBuilder, Validators } from '@angular/forms';
 import { MatStepper } from '@angular/material/stepper';
+import { Movie } from '../../interfaces/interface';
+import { BancoDeDadosService } from '../../services/banco-de-dados/banco-de-dados.service';
+import { MovieCadastro, UserInfo } from '../../interfaces/interface';
 
 @Component({
   selector: 'app-home',
@@ -9,99 +11,136 @@ import { MatStepper } from '@angular/material/stepper';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  [x: string]: any;
-
-  trendingMovies: any[] = [];
   trendingMoviesFilter: any[] = [[], [], [], []];
-  topRatedMovies: any[] = [];
   topRatedMoviesFilter: any[] = [[], [], [], []];
-  stepperContainer: any;
 
-  constructor(
-    private movieService: MovieService,
-    private _formBuilder: FormBuilder
-  ) {}
-
-  firstFormGroup = this._formBuilder.group({
-    firstCtrl: ['', Validators.required],
-  });
-  secondFormGroup = this._formBuilder.group({
-    secondCtrl: ['', Validators.required],
-  });
-  isEditable = false;
+  constructor(private movieService: MovieService, private bancoDeDadosService: BancoDeDadosService) {}
 
   ngOnInit() {
-    // // const movies = this.movieService.getTrendingMovies().results;
-
-
-    // // const movies = this.movieService.getTrendingMovies().results;
-    // this['Trendingmovies'].forEach((item: any, index: number) => {
-    //   // let j = index % 4;
-    //   // this.trendingMovies[j].push(item);
-    //   let groupIndex = Math.floor(index / 5);
-
-    //   if (groupIndex < this.trendingMovies.length) {
-    //     this.trendingMovies[groupIndex].push(item);
-    //   }
-    this.fetchTrendingMovies()
-    this.fetchTopRatedMovies()
-}
+    this.fetchTrendingMovies();
+    this.fetchTopRatedMovies();
+  }
 
   fetchTrendingMovies(): void {
     this.movieService.getTrendingMovies().subscribe({
-      next: (response: any) => { console.log(response)
-        this.trendingMovies = response.results;
-        response.results.forEach((item: any, index: number) => {
-          // let j = index % 4;
-          // this.trendingMovies[j].push(item);
-          let groupIndex = Math.floor(index / 5);
-
-          if (groupIndex < this.trendingMovies.length) {
-            this.trendingMoviesFilter[groupIndex].push(item);
-          }
-        });
+      next: (movies: Movie[]) => {
+        if (movies && Array.isArray(movies)) {
+          this.trendingMoviesFilter = [[], [], [], []];
+          movies.forEach((item: Movie, index: number) => {
+            const groupIndex = Math.floor(index / 5);
+            if (groupIndex < this.trendingMoviesFilter.length) {
+              this.trendingMoviesFilter[groupIndex].push(item);
+            }
+          });
+        }
       },
       error: (e: any) => console.error(e),
-      complete: () => console.info('Trending movies fetch complete')
+      complete: () => console.info('Trending movies fetch complete'),
     });
   }
 
   fetchTopRatedMovies(): void {
     this.movieService.getTopRatedMovies().subscribe({
-      next: (response: any) => {console.log(response)
-        this.topRatedMovies = response.results;
-        response.results.forEach((item: any, index: number) => {
-          let groupIndex = Math.floor(index / 5);
-          if (groupIndex < this.topRatedMovies.length) {
-            this.topRatedMoviesFilter[groupIndex].push(item);
-          }
-        });
-
+      next: (movies: Movie[]) => {
+        if (movies && Array.isArray(movies)) {
+          this.topRatedMoviesFilter = [[], [], [], []];
+          movies.forEach((item: Movie, index: number) => {
+            const groupIndex = Math.floor(index / 5);
+            if (groupIndex < this.topRatedMoviesFilter.length) {
+              this.topRatedMoviesFilter[groupIndex].push(item);
+            }
+          });
+        }
       },
       error: (e: any) => console.error(e),
       complete: () => console.info('Top-rated movies fetch complete'),
     });
   }
 
-  getMovieImageUrl(path: string): string {
-    return `https://image.tmdb.org/t/p/w500${path}`;
-  }
-
-  goNext(stepper: MatStepper) {
-    if (stepper.selectedIndex === stepper.steps.length - 1) {
-      stepper.selectedIndex = 0;  // Wrap to the first step
+  goNextTrending(trendingStepper: MatStepper) {
+    if (trendingStepper.selectedIndex === trendingStepper.steps.length - 1) {
+      trendingStepper.selectedIndex = 0;
     } else {
-      stepper.next();
+      trendingStepper.next();
     }
   }
 
-  goPrevious(stepper: MatStepper) {
-    if (stepper.selectedIndex === 0) {
-      stepper.selectedIndex = stepper.steps.length - 1;  // Wrap to the last step
+  goPreviousTrending(trendingStepper: MatStepper) {
+    if (trendingStepper.selectedIndex === 0) {
+      trendingStepper.selectedIndex = trendingStepper.steps.length - 1;
     } else {
-      stepper.previous();
+      trendingStepper.previous();
     }
   }
+
+  goNextTopRated(topRatedStepper: MatStepper) {
+    if (topRatedStepper.selectedIndex === topRatedStepper.steps.length - 1) {
+      topRatedStepper.selectedIndex = 0;
+    } else {
+      topRatedStepper.next();
+    }
+  }
+
+  goPreviousTopRated(topRatedStepper: MatStepper) {
+    if (topRatedStepper.selectedIndex === 0) {
+      topRatedStepper.selectedIndex = topRatedStepper.steps.length - 1;
+    } else {
+      topRatedStepper.previous();
+    }
+  }
+
+getMovieImageUrl(path: string): string {
+  if (!path) {
+    return '';
+  }
+
+  return `https://image.tmdb.org/t/p/w500${path}`;
 }
 
+
+  addToWatched(movie: Movie) {
+
+    const userId = 5;
+
+
+    const movieCadastro: MovieCadastro = {
+      id: userId,
+      nome: movie.title,
+      idAPI: movie.id,
+      backdropPath: movie.poster_path,
+    };
+
+    this.bancoDeDadosService.adicionarFilmeVisto(userId, movieCadastro).subscribe({
+      next: (response) => {
+        console.log('Filme adicionado à lista de vistos:', response);
+      },
+      error: (error) => {
+        console.error('Erro ao adicionar filme à lista de vistos:', error);
+      }
+    });
+  }
+
+
+  addToWishlist(movie: Movie) {
+
+    const userId = 5;
+
+
+    const movieCadastro: MovieCadastro = {
+      id: userId,
+      nome: movie.title,
+      idAPI: movie.id,
+      backdropPath: movie.poster_path,
+    };
+
+    this.bancoDeDadosService.adicionarFilmeWatchlist(userId, movieCadastro).subscribe({
+      next: (response) => {
+        console.log('Filme adicionado à lista de desejos:', response);
+      },
+      error: (error) => {
+        console.error('Erro ao adicionar filme à lista de desejos:', error);
+      }
+    });
+  }
+}
 
