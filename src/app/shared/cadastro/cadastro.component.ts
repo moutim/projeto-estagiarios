@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { RegistroLoginService } from '../../services/registro-login.service';
+import { BancoDeDadosService } from '../../services/banco-de-dados/banco-de-dados.service';
 
 @Component({
   selector: 'cadastro',
@@ -13,12 +14,14 @@ export class CadastroComponent {
   cardVisible = true;
   registerForm: FormGroup;
   hide = true;
+  errorLog: string = '';
 
   constructor(
     public dialog: MatDialog,
     private router: Router,
     public registroLoginService: RegistroLoginService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private serviceAPI: BancoDeDadosService
   ) {
     this.registerForm = this.formBuilder.group({
       name: ['', [Validators.required, Validators.pattern('^[a-zA-Z]{3,}$')]],
@@ -47,15 +50,24 @@ export class CadastroComponent {
   }
 
   onSubmit() {
-    if (this.registerForm.invalid) {
-      return;
-
+    const body = {
+      nome: this.registerForm.value.name,
+      sobrenome: this.registerForm.value.lastName,
+      email: this.registerForm.value.email,
+      senha: this.registerForm.value.password
     }
 
-    console.log(this.registerForm.value);
+    this.serviceAPI.cadastrarUsuario(body).subscribe({
+      next: (result) => {
+        console.log(result);
+        this.registroLoginService.changeRegistering();
+      },
+      error: (err) => {
+        this.errorLog = err.error.textMessage;
+      }
+    })
+
   }
-
-
 
   closeCardLog() {
     this.dialog.closeAll();

@@ -10,16 +10,28 @@ import { Observable } from 'rxjs';
   styleUrls: ['./listas.component.scss']
 })
 export class ListasComponent implements OnInit {
-  userId = 5; // ID do usuário desejado
+  userId: number = 0; // ID do usuário desejado
   watchedList: MovieDetails[] = [];
   watchList: MovieDetails[] = [];
   imageBaseUrl: string = 'https://image.tmdb.org/t/p/w500';
+  logError: string = '';
 
   constructor(private bancoDeDadosService: BancoDeDadosService, private movieService: MovieService) {}
 
   ngOnInit(): void {
     this.loadWatchedMovies();
     this.loadWatchlistMovies();
+
+    const storageUser = localStorage.getItem('userInfo');
+    type infoUser = {
+      id: number;
+      nome: string;
+      token: string;
+    }
+    if (storageUser) {
+      const infoUser: infoUser = JSON.parse(storageUser);
+      this.userId = infoUser?.id;
+    }
   }
 
   loadWatchedMovies(): void {
@@ -29,7 +41,10 @@ export class ListasComponent implements OnInit {
 
         this.populateMovieDetails(response, 'watchedList');
       },
-      error: (err: any) => console.error('Erro ao obter lista de assistidos:', err)
+      error: (err: any) => {
+        this.logError = err.error.textMessage;
+        console.error('Erro ao obter lista de assistidos:', err)
+      }
     });
   }
 
@@ -38,7 +53,10 @@ export class ListasComponent implements OnInit {
       next: (response: MovieCadastro[]) => {
         this.populateMovieDetails(response, 'watchList');
       },
-      error: (err: any) => console.error('Erro ao obter lista de desejos:', err)
+      error: (err: any) => {
+        this.logError = err.error.textMessage;
+        console.error('Erro ao obter lista de assistidos:', err)
+      }
     });
   }
 

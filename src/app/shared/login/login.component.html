@@ -14,18 +14,18 @@
   <div class="inputLog">
     <mat-form-field>
       <mat-label>Insira seu Email*</mat-label>
-      <input matInput placeholder="pat@example.com" />
+      <input matInput placeholder="pat@example.com" [(ngModel)]="email" />
     </mat-form-field>
 
     <mat-form-field>
       <mat-label>Insira sua senha*</mat-label>
-      <input matInput placeholder="123" />
+      <input matInput placeholder="123" [(ngModel)]="senha" />
     </mat-form-field>
   </div>
 
-  <div class="checkoutLog"></div>
+  <div class="checkoutLog">{{ errorLog }}</div>
   <div class="example-button-row">
-    <button mat-flat-button color="primary">Iniciar Sessão!</button>
+    <button (click)="login()" mat-flat-button color="primary">Iniciar Sessão!</button>
   </div>
 
   <div class="createAccount"></div>

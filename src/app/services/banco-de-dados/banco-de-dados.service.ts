@@ -9,9 +9,20 @@ import { MovieService } from '../movies/movie.service';
 })
 export class BancoDeDadosService {
   private baseUrl = 'https://asp-net-api-filmes.onrender.com/api';
-  private token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJhYzliODYzZi01MzI2LTQ1NTItYTY5Yi1lZTFlZTZhNDZlZDQiLCJhdWQiOiJLZXkzMjEiLCJpc3MiOiJLZXkxMjMiLCJuYmYiOjE3MTUwODg2NDksImV4cCI6MTcxNTExMDI0OSwiaWF0IjoxNzE1MDg4NjQ5fQ.LwZJgMgkdPUmVoeGmKjBtzuNQ46fpJiVtA2VzR9jKnQ'; // Substitua pelo seu token fixo
+  private token = ''; // Substitua pelo seu token fixo
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    const storageUser = localStorage.getItem('userInfo');
+    type infoUser = {
+      id: number;
+      nome: string;
+      token: string;
+    }
+    if (storageUser) {
+      const infoUser: infoUser = JSON.parse(storageUser);
+      this.token = infoUser?.token;
+    }
+  }
 
   cadastrarUsuario(usuario: any): Observable<any> {
     const url = `${this.baseUrl}/Cadastro`;
